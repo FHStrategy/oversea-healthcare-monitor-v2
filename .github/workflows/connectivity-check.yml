@@ -1,0 +1,178 @@
+name: 连通性测试
+
+# 只手动触发，不定时跑
+on:
+  workflow_dispatch:
+
+jobs:
+
+  # ========== 灯 1：飞书新应用能不能写表 ==========
+  feishu:
+    name: 飞书 - 认证 + 写表
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests
+
+      - name: 换取 token 并写入测试记录
+        env:
+          APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          BASE_TOKEN: ${{ secrets.FEISHU_BASE_TOKEN }}
+          TABLE_ID: ${{ secrets.FEISHU_TABLE_ID }}
+        run: |
+          python - <<'EOF'
+          import os, sys, requests
+
+          for k in ["APP_ID", "APP_SECRET", "BASE_TOKEN", "TABLE_ID"]:
+              if not os.environ.get(k):
+                  sys.exit(f"❌ Secret 缺失或名字拼错: FEISHU_{k}")
+
+          # --- 1. 换 tenant_access_token ---
+          r = requests.post(
+              "https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal",
+              json={"app_id": os.environ["APP_ID"], "app_secret": os.environ["APP_SECRET"]},
+              timeout=15,
+          )
+          d = r.json()
+          if d.get("code") != 0:
+              print(f"❌ 换 token 失败: code={d.get('code')} msg={d.get('msg')}")
+              if "ip" in str(d.get("msg", "")).lower():
+                  print("   → 看起来是 IP 白名单挡住了 Actions")
+              sys.exit(1)
+          token = d["tenant_access_token"]
+          print("✅ tenant_access_token 换取成功（说明没开 IP 白名单）")
+
+          H = {"Authorization": f"Bearer {token}"}
+          BASE = os.environ["BASE_TOKEN"]
+          TABLE = os.environ["TABLE_ID"]
+          url = f"https://open.feishu.cn/open-apis/bitable/v1/apps/{BASE}/tables/{TABLE}/records"
+
+          # --- 2. 读字段（验证应用是否被授权到这张表）---
+          r = requests.get(
+              f"https://open.feishu.cn/open-apis/bitable/v1/apps/{BASE}/tables/{TABLE}/fields",
+              headers=H, timeout=15,
+          )
+          d = r.json()
+          if d.get("code") != 0:
+              print(f"❌ 读字段失败: code={d.get('code')} msg={d.get('msg')}")
+              print("   → 最可能：应用没被『分享』添加为这张表的协作者")
+              sys.exit(1)
+          fields = [f["field_name"] for f in d["data"]["items"]]
+          print(f"✅ 读到 {len(fields)} 个字段: {fields}")
+
+          # --- 3. 写一条测试记录，然后删掉 ---
+          r = requests.post(url, headers=H, json={"fields": {fields[0]: "连通性测试"}}, timeout=15)
+          d = r.json()
+          if d.get("code") != 0:
+              print(f"❌ 写入失败: code={d.get('code')} msg={d.get('msg')}")
+              print("   → 最可能：应用在这张表上只有『可阅读』，需要改成『可编辑』")
+              sys.exit(1)
+          rec_id = d["data"]["record"]["record_id"]
+          print(f"✅ 写入成功 record_id={rec_id}")
+
+          r = requests.delete(f"{url}/{rec_id}", headers=H, timeout=15)
+          if r.json().get("code") == 0:
+              print("✅ 测试记录已清理，表格干净")
+          else:
+              print(f"⚠️ 清理失败，请手动删掉 record_id={rec_id}")
+          EOF
+
+  # ========== 灯 2：阿里云百炼 ==========
+  bailian:
+    name: 百炼 - qwen-plus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - name: 调一次翻译
+        env:
+          KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+        run: |
+          python - <<'EOF'
+          import os, sys, time, requests
+          if not os.environ.get("KEY"):
+              sys.exit("❌ Secret 缺失或名字拼错: DASHSCOPE_API_KEY")
+
+          t0 = time.time()
+          r = requests.post(
+              "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+              headers={"Authorization": f"Bearer {os.environ['KEY']}"},
+              json={
+                  "model": "qwen-plus",
+                  "messages": [{"role": "user", "content":
+                      "把下面这句翻译成中文，只输出译文：IHH hospitals in India see fewer patients from Middle East due to war"}],
+                  "temperature": 0.1,
+              },
+              timeout=60,
+          )
+          dt = time.time() - t0
+          if r.status_code != 200:
+              sys.exit(f"❌ 百炼返回 {r.status_code}: {r.text[:300]}")
+          out = r.json()["choices"][0]["message"]["content"]
+          print(f"✅ 百炼可用，耗时 {dt:.1f}s")
+          print(f"   译文: {out}")
+          usage = r.json().get("usage", {})
+          print(f"   token 用量: {usage}")
+          EOF
+
+  # ========== 灯 3：本地 vLLM 在 Actions 里通不通 ==========
+  local-vllm:
+    name: 本地模型 - 47.117.187.203 可达性
+    runs-on: ubuntu-latest
+    steps:
+      - name: 探测
+        run: |
+          echo "Actions 出口 IP:"
+          curl -s --max-time 10 https://api.ipify.org || echo "(取不到)"
+          echo ""
+          echo "探测 47.117.187.203:80 ..."
+          if curl -s -o /dev/null -w "HTTP %{http_code} / 耗时 %{time_total}s\n" \
+                  --max-time 20 http://47.117.187.203/v1/models; then
+            echo "✅ 端口有响应 —— 本地模型可能不用换，下一步补 key 做完整测试"
+          else
+            echo "❌ 连不上（超时或拒绝）"
+            echo "   → 符合预期：GitHub runner 在微软云，到你们这个阿里云 IP 不通"
+            echo "   → 结论：翻译/摘要走百炼"
+            exit 1
+          fi
+
+  # ========== 灯 4：Firecrawl ==========
+  firecrawl:
+    name: Firecrawl - 搜索
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - name: 搜一次
+        env:
+          KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+        run: |
+          python - <<'EOF'
+          import os, sys, json, requests
+          if not os.environ.get("KEY"):
+              sys.exit("❌ Secret 缺失或名字拼错: FIRECRAWL_API_KEY")
+
+          r = requests.post(
+              "https://api.firecrawl.dev/v1/search",
+              headers={"Authorization": f"Bearer {os.environ['KEY']}",
+                       "Content-Type": "application/json"},
+              json={"query": "IHH Healthcare", "limit": 3, "tbs": "qdr:d"},
+              timeout=60,
+          )
+          print(f"HTTP {r.status_code}")
+          if r.status_code != 200:
+              sys.exit(f"❌ Firecrawl 返回错误: {r.text[:500]}")
+
+          d = r.json()
+          print("✅ Firecrawl key 可用")
+          print("--- 原始响应结构（用来确定新版怎么解析）---")
+          print(json.dumps(d, ensure_ascii=False, indent=2)[:2500])
+          EOF
