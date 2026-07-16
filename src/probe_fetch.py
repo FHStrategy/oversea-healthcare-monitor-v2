@@ -42,6 +42,7 @@ def build_tasks(sources, limit_entities=None):
     ents = sources["entities"]
     if limit_entities:
         ents = ents[:limit_entities]
+    searched = [e["name"] for e in ents]          # 只有这些机构真被搜过
     for e in ents:
         for q in e.get("queries", []):
             tasks.append(("entity", e["name"], q, d["limit"]))
@@ -56,7 +57,7 @@ def build_tasks(sources, limit_entities=None):
             for kw in sea.get("keywords", [])[: sea.get("max_keywords_per_site", 2)]:
                 tasks.append(("sea", c["name"], f"site:{site} {kw}", sea.get("limit", 3)))
 
-    return tasks
+    return tasks, searched
 
 
 def main():
@@ -73,10 +74,10 @@ def main():
     aggs = filters["aggregator_domains"]
     dd = filters["dedupe"]
 
-    tasks = build_tasks(sources, args.limit_entities)
+    tasks, searched_entities = build_tasks(sources, args.limit_entities)
     log("=" * 64)
     log(f"探针启动  {datetime.now(UTC).isoformat()}")
-    log(f"实体 {len(sources['entities'])} 个 | 搜索任务 {len(tasks)} 条 | tbs={tbs!r}")
+    log(f"实体 {len(searched_entities)}/{len(sources['entities'])} 个 | 搜索任务 {len(tasks)} 条 | tbs={tbs!r}")
     log("=" * 64)
 
     # ---------- 抓取（并发）----------
@@ -136,6 +137,7 @@ def main():
     # ---------- 实体匹配（词边界 + 最长匹配）----------
     idx = AliasIndex.build(sources["entities"])
     agree = disagree = unmatched = 0
+    unmatched_rows, reassigned_rows = [], []
     for it in raw:
         if it["_kind"] != "entity":
             it["matched_entity"] = None
@@ -146,12 +148,14 @@ def main():
             it["matched_entity"] = None
             it["matched_alias"] = None
             unmatched += 1
+            unmatched_rows.append((it["_query_owner"], it.get("title", ""), domain_of(it.get("url", ""))))
         else:
             it["matched_entity"], it["matched_alias"] = m
             if m[0] == it["_query_owner"]:
                 agree += 1
             else:
                 disagree += 1
+                reassigned_rows.append((it["_query_owner"], m[0], m[1], it.get("title", "")))
 
     # ---------- 去重 ----------
     ent_items = [x for x in raw if x["_kind"] == "entity"]
@@ -221,9 +225,45 @@ def main():
     cnt = Counter(x["matched_entity"] for x in ent_kept if x.get("matched_entity"))
     for name, n in cnt.most_common(15):
         out(f"  {n:>3}  {name}")
-    zero = [e["name"] for e in sources["entities"] if e["name"] not in cnt]
+    # 只统计【真的搜过】的机构。旧版把没搜的也算 0 条，是错的。
+    zero = [n for n in searched_entities if n not in cnt]
     if zero:
-        out(f"\n  0 条的机构 ({len(zero)}): {', '.join(zero)}")
+        out(f"\n  搜过但 0 条 ({len(zero)}/{len(searched_entities)}): {', '.join(zero)}")
+    skipped = len(sources["entities"]) - len(searched_entities)
+    if skipped:
+        out(f"  (另有 {skipped} 个机构本次未搜索 —— limit-entities 生效中)")
+
+    # ---- 诊断：为什么没匹配上 ----
+    if unmatched_rows:
+        out("")
+        out("=" * 64)
+        out(f"### ❌ 没匹配上任何机构的条目（全部 {len(unmatched_rows)} 条）")
+        out("=" * 64)
+        out("这些会被丢弃。若发现误杀，说明 aliases 太严。")
+        for owner, title, dom in unmatched_rows:
+            out(f"  [query={owner}]")
+            out(f"     {title[:88]}")
+            out(f"     @{dom}")
+
+    if reassigned_rows:
+        out("")
+        out("=" * 64)
+        out(f"### 🔄 被重新归属的条目（{len(reassigned_rows)} 条）")
+        out("=" * 64)
+        for owner, to, alias, title in reassigned_rows:
+            out(f"  {owner} -> {to}  (via {alias!r})")
+            out(f"     {title[:88]}")
+
+    # ---- 诊断：坏 URL ----
+    bad = [x for x in kept if not domain_of(x.get("url", ""))]
+    if bad:
+        out("")
+        out("=" * 64)
+        out(f"### ⚠️ URL 解析不出域名（{len(bad)} 条）")
+        out("=" * 64)
+        for x in bad:
+            out(f"  url={x.get('url')!r}")
+            out(f"     {x.get('title','')[:80]}")
 
     out("")
     out("=" * 64)
