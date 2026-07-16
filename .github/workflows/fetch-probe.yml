@@ -1,0 +1,49 @@
+name: 抓取探针
+
+# 只手动触发。这是探针，不是生产流水线。
+on:
+  workflow_dispatch:
+    inputs:
+      limit_entities:
+        description: '只跑前 N 个机构（留空=全部 26 个。想省 Firecrawl 额度就填 5）'
+        required: false
+        default: ''
+      workers:
+        description: '并发数'
+        required: false
+        default: '6'
+
+jobs:
+  probe:
+    name: 抓取 → 规范化 → 去重 → 统计
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests pyyaml
+
+      - name: 跑探针
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+        run: |
+          ARGS="--workers ${{ github.event.inputs.workers }}"
+          if [ -n "${{ github.event.inputs.limit_entities }}" ]; then
+            ARGS="$ARGS --limit-entities ${{ github.event.inputs.limit_entities }}"
+          fi
+          echo "运行: python src/probe_fetch.py $ARGS"
+          python src/probe_fetch.py $ARGS
+
+      # 把原始数据存成 artifact，跑完可以下载下来细看
+      - name: 上传抓取结果
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-output
+          path: probe_output/
+          retention-days: 7
