@@ -59,10 +59,12 @@ invalid_titles:
 excluded_event_types:
 
   军事冲突:
+    # 裸 "attack" 会命中 "heart attack" / "panic attack"，已移除。
+    # 具体短语（bombing / air strike / drone attack）已足够覆盖。
     keywords:
-      ["strike", "bombing", "attack", "military operation", "air strike",
-       "drone attack", "killed in", "casualties from", "iran strike",
-       "israeli strike", "military"]
+      ["bombing", "military operation", "air strike", "airstrike",
+       "drone attack", "missile", "killed in", "casualties from",
+       "iran strike", "israeli strike", "military strike", "war zone"]
     exceptions:
       ["hospital", "medical center", "medical centre", "healthcare group",
        "clinic", "doctor", "nurse", "patient care", "health policy",
@@ -79,13 +81,20 @@ excluded_event_types:
        "health minister"]
 
   犯罪事故:
+    # 2026-07-15 实证：曼谷酒吧火灾一起事件灌进 18 条 / 68 条机构新闻 = 26%。
+    # 它们全部含 "hospital"（"dozens remain in hospital"），能过医疗核心词门槛，
+    # 一旦开了行业通道就会全部涌进模型。必须在规则层拦死。
     keywords:
-      ["murder", "crime", "arrest", "investigation", "trial", "court case",
-       "accident", "crash", "fire at", "stampede", "assault",
-       "run down", "motorcyclist", "hit by"]
+      ["murder", "crime", "arrest", "trial", "court case",
+       "accident", "crash", "stampede", "assault",
+       "run down", "motorcyclist", "hit by", "coroner",
+       "death toll", "toll rises", "caught fire", "fire at", "blaze",
+       "fire kills", "casualties", "mourns", "died in hospital",
+       "still hospitalised", "remain in hospital"]
     exceptions:
       ["hospital safety", "medical error", "patient safety",
-       "healthcare fraud", "hospital fire safety", "medical malpractice"]
+       "healthcare fraud", "hospital fire safety", "medical malpractice",
+       "hospitals probed", "hospital probed", "private hospitals"]
 
   一般政治:
     keywords:
@@ -117,16 +126,54 @@ excluded_event_types:
       ["sports medicine", "athlete health", "sports injury",
        "physical therapy", "orthopedic"]
 
+  股票行情:
+    # 纯行情播报/技术分析。注意例外机制在这里【不适用】——
+    # 关键词挑的是「行情播报体裁」的标志词，不是「股票」这个话题。
+    # 「Thai Hospital Stocks Rally as Broker Sees Attractive Valuation」这种
+    # 医疗板块分析不含这些词，能活下来 ——> 那是真情报。
+    keywords:
+      ["market talk", "roundup: market", "equities roundup", "market roundup",
+       "52-week high", "52-week low", "multibagger", "stocks to buy",
+       "key resistance", "technical analysis", "buy call", "sell call",
+       "opens higher", "opens lower", "closes higher", "closes lower",
+       "index rises", "index falls", "stocks lift", "market capitalisation",
+       "market capitalization", "stocks bought and sold", "ipo to open",
+       "top stocks in news", "share price target", "stock analysis",
+       "rallied up to", "hit 52-week"]
+    exceptions: []
+
+  影视娱乐:
+    keywords:
+      ["fans choose", "pays tribute", "soap opera", "season finale",
+       "tv series", "drama series", "box office", "singer", "actress",
+       "his return", "her return", "popular tracks"]
+    exceptions: []
+
+  健康科普:
+    # SEO 内容农场 / 科普长文。不是行业动态。
+    keywords:
+      ["risk factors", "warning signs", "know the signs", "benefits and risks",
+       "what to know", "tips for", "how to prevent", "home remedies",
+       "things you should know", "best foods", "2026 guide", "- guide",
+       "proven ", "top 10 ", "top 15 ", "what is "]
+    exceptions: []
+
   # 以下三类来自旧 run.py::filter_keywords，原本是无例外的硬排除。
   # 迁进来后统一加上例外机制。
   个人生活:
+    # 裸 "birth"/"born" 太宽 —— 实证误杀了
+    # "Six hospitals probed over birth-record scam"（泰国医院造假入籍丑闻）。
+    # 收紧成具体短语。
     keywords:
-      ["baby", "babies", "birth", "born", "pregnant", "pregnancy",
+      ["baby", "babies", "gives birth", "gave birth", "newborn",
+       "pregnant", "pregnancy",
        "wedding", "marriage", "divorce", "patient story", "patient shares",
        "miracle", "survivor", "recovery story"]
     exceptions:
       ["maternity ward", "fertility clinic", "ivf", "birth rate",
-       "obstetrics", "neonatal", "reproductive health"]
+       "obstetrics", "neonatal", "reproductive health",
+       "birth record", "birth-record", "birth certificate",
+       "hospitals probed", "hospital probed"]
 
   节庆活动:
     keywords:
@@ -319,6 +366,23 @@ url_normalize:
   strip_www: true
   strip_trailing_slash: true
 
+# 域名黑名单：整站丢弃，不进漏斗。
+# 比标题关键词稳得多 —— 房产站/招聘站的标题千变万化，域名不变。
+# 全部来自 2026-07-15 探针的实证。
+blocked_domains:
+  # 房产 / 分类信息
+  ["edgeprop.sg", "edgeprop.my", "mudah.my", "propertyguru.com.sg",
+   "propertyguru.com.my", "iproperty.com.my", "thailand-property.com",
+   # 招聘
+   "indeed.com", "jobstreet.com", "fastjobs.sg", "recruit.com.hk",
+   "linkedin.com", "bold.pro",
+   # 社交（news 源正常不会返回，防御性）
+   "instagram.com", "facebook.com", "tiktok.com", "twitter.com", "x.com",
+   # 股票行情站
+   "simplywall.st", "moomoo.com", "scanx.trade", "whalesbook.com",
+   "klsescreener.com", "tradebrains.in", "marketsmojo.com",
+   "news.futunn.com", "investing.com", "cn.investing.com"]
+
 # 聚合器域名：转载源，同一内容会重复出现。
 # 不直接丢弃（有时只有它有），但标记出来，去重时优先保留原发媒体。
 aggregator_domains:
@@ -332,6 +396,24 @@ dedupe:
   by_title_similarity: 0.80      # 机构新闻，来源 deduplicate_by_similarity
   by_title_similarity_sea: 0.85  # 东南亚动态，旧代码用的是 0.85
   prefer_non_aggregator: true    # 标题几乎相同时，保留非聚合器的那条
+
+# ===========================================================================
+# 行业新闻通道（2026-07-15 新增）
+# ===========================================================================
+# 机构 query 搜回来但没匹配上任何 alias 的条目，旧版直接丢。
+# 实证发现里面有真情报：
+#   "Six hospitals probed over birth-record scam"          泰国私立医院造假丑闻
+#   "Malaysia healthcare kept at Market Weight"            板块估值
+#   "Thai Hospital Stocks Rally as Broker Sees Valuation"  竞争格局
+#   "Australia Pairs Up with Thailand ... Medical Tourism" 医疗旅游
+#   "Selangor identifies Taman Medan as site for hospital" 新建项目
+# 这些不是那 26 家的新闻，但是医疗行业动态 —— 战略价值不低。
+industry_channel:
+  enabled: true
+  board_name: "行业动态"      # 网页板块名，排在国家板块之后
+  entity_field: ""            # 飞书「机构」字段留空；「国家/地区」照常填
+  # 进入条件：没匹配上机构 AND 过 healthcare_core AND 未被 excluded_event_types 排除
+  #           AND 过模型精筛
 
 # 时间窗口
 retention:
