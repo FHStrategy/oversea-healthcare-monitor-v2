@@ -117,8 +117,12 @@ entities:
     group: IHH Healthcare
     queries:
       - "Fortis Healthcare India"
-    aliases: ["fortis healthcare", "fortis hospital"]
-    # ⚠️ 旧别名是裸 "fortis"，已收紧。见「已知风险 ⑤」
+    aliases: ["fortis healthcare", "fortis hospital", "fortis escorts",
+              "fortis memorial", "fortis flt. lt. rajan dhall"]
+    # 裸 "fortis" 不能用：Fortis Inc. 是加拿大上市公用事业公司。
+    # "fortis escorts" 有实证 —— 2026-07-15 探针里
+    # "Fortis Escorts Faridabad Strengthens Advanced Care Ecosystem..."
+    # 是真新闻，被旧别名误杀了。
 
   - name: Acibadem Healthcare Group
     country: 土耳其
