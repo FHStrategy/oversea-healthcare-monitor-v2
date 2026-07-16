@@ -76,6 +76,365 @@ entities:
     queries:
       - "Pantai Hospital Malaysia"
     aliases: ["pantai hospital", "pantai holdings"]
+    weak_aliases: ["pantai"]
+    # pantai = 马来语「海滩」，裸词太宽 -> 降为弱别名（需医疗核心词背书）
+
+  - name: Gleneagles Kuala Lumpur
+    country: 马来西亚
+    group: IHH Healthcare
+    newsweek_rank: "马来西亚 #2"
+    queries:
+      - "Gleneagles Hospital Kuala Lumpur"
+    aliases: ["gleneagles kl", "gleneagles kuala lumpur", "gleneagles"]
+
+  - name: Subang Jaya Medical Centre
+    country: 马来西亚
+    group: IHH Healthcare
+    newsweek_rank: "马来西亚 #3"
+    queries:
+      - "Subang Jaya Medical Centre"
+      - "SJMC hospital Malaysia"      # ← 新增：别名提升为 query
+    aliases: ["subang jaya medical", "sjmc"]
+
+  - name: Island Hospital
+    country: 马来西亚
+    group: IHH Healthcare
+    newsweek_rank: "马来西亚 #7 (2026)"
+    note: "2024年被IHH收购"
+    queries:
+      - "Island Hospital Penang"       # ← 加了 Penang 消歧
+    aliases: ["island hospital"]
+
+  - name: Prince Court Medical Centre
+    country: 马来西亚
+    group: IHH Healthcare
+    newsweek_rank: "马来西亚 #4 (2026)"
+    queries:
+      - "Prince Court Medical Centre"
+    aliases: ["prince court"]
+
+  - name: Fortis Healthcare
+    country: 印度
+    group: IHH Healthcare
+    queries:
+      - "Fortis Healthcare India"
+    aliases: ["fortis healthcare", "fortis hospital", "fortis escorts",
+              "fortis memorial", "fortis flt. lt. rajan dhall"]
+    weak_aliases: ["fortis"]
+    # 裸 "fortis" 降为弱别名：Fortis Inc.（加拿大公用事业）不带医疗词 -> 不匹配；
+    # "Fortis' takeover by an international healthcare chain" 带 healthcare -> 匹配。
+    # 实证：2026-07-16 那条 IHH 收购 Fortis 的分析文章就是这么丢的。
+    # 裸 "fortis" 不能用：Fortis Inc. 是加拿大上市公用事业公司。
+    # "fortis escorts" 有实证 —— 2026-07-15 探针里
+    # "Fortis Escorts Faridabad Strengthens Advanced Care Ecosystem..."
+    # 是真新闻，被旧别名误杀了。
+
+  - name: Acibadem Healthcare Group
+    country: 土耳其
+    group: IHH Healthcare
+    queries:
+      - "Acibadem Healthcare"
+    aliases: ["acibadem", "acıbadem"]
+    # ⚠️ 旧别名含 "ihh"，已移除 —— 那是个 bug。见「已知风险 ①」
+
+  # ===================== 泰国 Top 医疗集团 =====================
+
+  - name: Bumrungrad International Hospital
+    country: 泰国
+    group: null
+    newsweek_rank: "泰国 #1 (2025)"
+    note: "独立上市"
+    queries:
+      - "Bumrungrad Hospital"
+    aliases: ["bumrungrad"]
+
+  - name: Samitivej Hospitals
+    country: 泰国
+    group: null
+    newsweek_rank: "泰国 #2 (2025)"
+    queries:
+      - "Samitivej Hospital Thailand"
+    aliases: ["samitivej"]
+
+  - name: Bangkok Hospital Group
+    country: 泰国
+    group: BDMS
+    newsweek_rank: "泰国 #5 (2025)"
+    queries:
+      - "Bangkok Hospital Thailand"
+    aliases: ["bangkok hospital", "bangkok dental", "bangkok heart"]
+
+  - name: MedPark Hospital
+    country: 泰国
+    group: BDMS
+    newsweek_rank: "泰国 #6 (2025)"
+    queries:
+      - "MedPark Hospital Bangkok"
+    aliases: ["medpark"]
+
+  - name: BDMS (Bangkok Dusit Medical Services)
+    country: 泰国
+    group: BDMS
+    is_group_hq: true
+    queries:
+      - "BDMS Bangkok Dusit"
+    aliases: ["bdms", "bangkok dusit"]
+    # ⚠️ 旧别名含 "bangkok hospital group"，与 Bangkok Hospital Group 撞车，已移除
+
+  - name: Thonburi Hospital
+    country: 泰国
+    group: Thonburi Healthcare Group
+    newsweek_rank: "泰国 #8 (2025)"
+    queries:
+      - "Thonburi Hospital Bangkok"
+    aliases: ["thonburi hospital", "thonburi healthcare"]
+
+  - name: Praram 9 Hospital
+    country: 泰国
+    group: null
+    newsweek_rank: "泰国 #9 (2025)"
+    note: "独立上市"
+    queries:
+      - "Praram 9 Hospital"
+    aliases: ["praram 9"]
+    # ⚠️ 旧别名含裸 "praram"，收紧为 "praram 9"
+
+  - name: Phyathai Hospital Group
+    country: 泰国
+    group: Phyathai-Paolo Group
+    newsweek_rank: "泰国 #18, #20 (2025)"
+    queries:
+      - "Phyathai Hospital Bangkok"
+    aliases: ["phyathai", "paolo hospital"]
+    # ⚠️ 旧别名含裸 "paolo"（会命中人名 Paolo），收紧
+
+  # ===================== 马来西亚其他 =====================
+
+  - name: Sunway Medical Centre
+    country: 马来西亚
+    group: Sunway Healthcare
+    newsweek_rank: "马来西亚 #1 (2026)"
+    queries:
+      - "Sunway Medical Centre Malaysia"
+    aliases: ["sunway medical", "sunway healthcare"]
+
+  - name: KPJ Healthcare
+    country: 马来西亚
+    group: KPJ
+    queries:
+      - "KPJ Healthcare Malaysia"
+    aliases: ["kpj"]
+
+  - name: Mahkota Medical Centre
+    country: 马来西亚
+    group: HMI Medical
+    newsweek_rank: "马来西亚 #12 (2026)"
+    queries:
+      - "Mahkota Medical Centre Malaysia"
+    aliases: ["mahkota medical"]
+
+  # ===================== 新加坡其他 =====================
+
+  - name: Raffles Medical Group
+    country: 新加坡
+    group: null
+    queries:
+      - "Raffles Medical Singapore"
+    aliases: ["raffles medical", "raffles hospital"]
+
+  - name: Singapore General Hospital
+    country: 新加坡
+    group: null
+    newsweek_rank: "新加坡 #1"
+    queries:
+      - "Singapore General Hospital"
+    aliases: ["singapore general hospital", "sgh singapore"]
+
+  # ===================== 印度其他 =====================
+
+  - name: Apollo Hospitals
+    country: 印度
+    group: Apollo
+    newsweek_rank: "印度 #5 (2025)"
+    queries:
+      - "Apollo Hospitals India"
+    aliases: ["apollo hospital", "apollo health"]
+    weak_aliases: ["apollo"]
+    # 裸 "apollo" 降为弱别名：Apollo Tyres / Apollo Global Management 不带医疗词。
+    # 实证收益："Leicester-Apollo conference explores research collaborations"
+    # 是 Apollo Hospitals 的合作会议，之前掉进了行业动态。
+
+  - name: Aster DM Healthcare
+    country: 印度
+    group: Aster
+    queries:
+      - "Aster DM Healthcare"
+    aliases: ["aster dm", "aster hospital", "aster medicare"]
+
+
+# ===================== 网页板块 =====================
+# 网页上的板块顺序与国旗。改这里就改页面，不用碰代码。
+#
+# 与旧版 LOCATION_ORDER 的差异：
+#   - 移除「土耳其」：Acibadem 归入 IHH集团后该板块恒为空
+#   - 新增「行业动态」：接住不属于那 26 家、但有价值的行业情报
+#     （泰国私立医院造假丑闻、板块估值、医疗旅游、新建项目…）
+#   - 新增 印尼/越南/菲律宾：sea_health 本来就在搜这三国，
+#     旧版没有对应板块，它们只能掉进「其他」
+boards:
+  - {name: "IHH集团",   flag: "🌐"}
+  - {name: "新加坡",    flag: "🇸🇬"}
+  - {name: "马来西亚",  flag: "🇲🇾"}
+  - {name: "泰国",      flag: "🇹🇭"}
+  - {name: "印尼",      flag: "🇮🇩"}
+  - {name: "越南",      flag: "🇻🇳"}
+  - {name: "菲律宾",    flag: "🇵🇭"}
+  - {name: "印度",      flag: "🇮🇳"}
+  - {name: "行业动态",  flag: "📊"}
+  - {name: "其他",      flag: "🌏"}
+
+
+# ===================== 行业新闻源 =====================
+# 旧 targets.json::news_sources。用 site: 限定搜索。
+
+news_sources:
+  - name: Healthcare Asia News
+    site: healthcareasia.asia
+    keywords: ["hospital", "healthcare", "medical tourism"]
+
+  - name: Medical Tourism Association
+    site: medicaltourismassociation.com
+    keywords: ["medical tourism", "international patient"]
+
+  - name: Hospital Management
+    site: hospitalmanagement.net
+    keywords: ["hospital", "healthcare management"]
+
+  - name: Healthcare Global
+    site: healthcareglobal.com
+    keywords: ["healthcare", "hospital", "medical"]
+
+
+# ===================== 东南亚卫生动态 =====================
+# 旧 targets.json::sea_health_news
+# ⚠️ 旧代码有硬编码截断：sites[:1] 和 keywords[:2]
+#    → 配了 3 站点 × 5 关键词，实际只跑 1×2。配置写了个寂寞。
+# 新版把限制显式写在这里，不再藏在代码里。
+
+sea_health:
+  max_sites_per_country: 1     # 旧代码的 sites[:1]，先保持一致
+  max_keywords_per_site: 2     # 旧代码的 keywords[:2]，先保持一致
+  limit: 3
+
+  keywords:
+    - "healthcare policy"
+    - "health ministry"
+    - "medical regulation"
+    - "health insurance"
+    - "hospital regulation"
+
+  countries:
+    - name: 新加坡
+      sites: ["moh.gov.sg", "channelnewsasia.com", "straitstimes.com"]
+    - name: 马来西亚
+      sites: ["moh.gov.my", "thestar.com.my", "malaymail.com"]
+    - name: 泰国
+      sites: ["moph.go.th", "bangkokpost.com", "nationthailand.com"]
+    - name: 印尼
+      sites: ["kemkes.go.id", "thejakartapost.com", "kompas.com"]
+    - name: 越南
+      sites: ["moh.gov.vn", "vnexpress.net", "tuoitrenews.vn"]
+    - name: 菲律宾
+      sites: ["doh.gov.ph", "inquirer.net", "rappler.com"]
+    - name: 印度
+      sites: ["mohfw.gov.in", "health.economictimes.indiatimes.com", "hindustantimes.com"]
+
+
+# ===========================================================================
+# 匹配规则（新版行为，与旧代码不同 —— 实现时必须遵守）
+# ===========================================================================
+#
+# 1. 词边界匹配，不是子串匹配
+#      旧: if alias in content
+#      新: if re.search(rf"\b{re.escape(alias)}\b", content)
+#    这让短别名（ihh / kpj / sgh / bdms / sjmc）全部安全可用。
+#    旧代码因为用子串匹配，被迫删掉或收紧短别名 —— 现在不用了。
+#
+# 2. 最长匹配优先
+#    一条新闻同时命中多个实体的别名时，取【最长别名】对应的实体。
+#      "Parkway East Hospital expands" → "parkway east"(12) vs "parkway"(7)
+#                                       → Parkway East Hospital
+#      "Parkway to invest RM500m"      → 只有 "parkway"
+#                                       → Parkway Pantai
+#    旧代码靠字典遍历顺序，结果不可预测 —— 这是个隐性 bug。
+#
+# 3. 板块归属
+#    group == "IHH Healthcare"  → 归入「IHH集团」板块（不按国家细分）
+#    其余                        → 按 country 归板块
+#    country 字段对 IHH 系机构仅作记录，不参与分组。
+#
+# 4. 板块顺序（土耳其已移除 —— Acibadem 归入 IHH集团后该板块恒为空）
+#    LOCATION_ORDER = ["IHH集团", "新加坡", "马来西亚", "泰国", "印度", "其他"]
+#
+# ===========================================================================
+# 决策记录（2026-07-15）
+# ===========================================================================
+#
+# ① Acibadem 别名移除 "ihh"           ✅ 已确认 —— 旧代码 bug，IHH ≠ Acibadem
+# ② "mount e" 移除                    ✅ 无争议
+# ③ "parkway" 冲突                    ✅ 已确认 —— 新建 Parkway Pantai 实体接管，
+#                                        靠最长匹配与 Parkway East 共存
+# ④ 裸 "pantai" → "pantai hospital"   ✅ 收紧（pantai = 马来语「海滩」）
+# ⑤ 裸 "fortis" → "fortis healthcare" ✅ 收紧（Fortis Inc. 是加拿大公用事业公司）
+# ⑥ 裸 "praram"/"paolo" 收紧          ✅ 收紧
+# A. IHH 不按国家细分                  ✅ 已确认
+# B. queries 暂不扩展                  ✅ 已确认 —— 先跑一版看召回
+# C. sea_health 截断暂不放开           ✅ 已确认 —— 1站点 × 2关键词
+#
+# 遗留：裸 "ihh" 最初被我误删（理由「三字母太短」），实为误判 ——
+#      真正的解法是词边界匹配而非删别名。已加回 IHH Healthcare。
+      - "IHH Healthcare"
+    aliases: ["ihh", "ihh healthcare", "ihh berhad"]
+    # 裸 "ihh" 安全，因为匹配用【词边界】而非子串：\bihh\b
+    # 能命中 "IHH's Q3 revenue"、"(IHH)"、"IHH-owned"，不会误伤
+
+  - name: Mount Elizabeth Hospital
+    country: 新加坡
+    group: IHH Healthcare
+    newsweek_rank: "新加坡 #5"
+    queries:
+      - "Mount Elizabeth Hospital Singapore"
+    aliases: ["mount elizabeth", "mt elizabeth", "mount e hospital"]
+    # 旧别名 "parkway" 移交给新建的 Parkway Pantai 实体（最长匹配优先）
+
+  - name: Parkway East Hospital
+    country: 新加坡
+    group: IHH Healthcare
+    queries:
+      - "Parkway East Hospital Singapore"
+    aliases: ["parkway east"]
+
+  - name: Parkway Pantai
+    country: 新加坡
+    group: IHH Healthcare
+    is_brand: true
+    note: "IHH 在新马的运营品牌，旗下含 Mount Elizabeth / Gleneagles / Pantai 等"
+    queries:
+      - "Parkway Pantai"
+    aliases: ["parkway pantai", "parkway group", "parkway"]
+    # 裸 "parkway" 放这里做兜底：只说 Parkway 不点名医院的品牌级新闻归这里。
+    # 与 "parkway east" 的冲突由【最长匹配优先】解决：
+    #   "Parkway East Hospital expands" → 命中 "parkway east"(12) 和 "parkway"(7)
+    #                                    → 长的赢 → Parkway East Hospital ✅
+    #   "Parkway to invest RM500m"      → 只命中 "parkway" → Parkway Pantai ✅
+
+  - name: Pantai Hospitals
+    country: 马来西亚
+    group: IHH Healthcare
+    newsweek_rank: "马来西亚 #5"
+    queries:
+      - "Pantai Hospital Malaysia"
+    aliases: ["pantai hospital", "pantai holdings"]
     # ⚠️ 旧别名是裸 "pantai"，已收紧。见「已知风险 ④」
 
   - name: Gleneagles Kuala Lumpur
