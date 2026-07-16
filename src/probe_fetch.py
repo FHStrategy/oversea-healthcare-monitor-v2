@@ -34,7 +34,7 @@ def log(msg=""):
     print(msg, flush=True)
 
 
-def build_tasks(sources, limit_entities=None):
+def build_tasks(sources, limit_entities=None, quote=False):
     """把配置展开成 (类别, 归属, query) 的扁平任务列表。"""
     tasks = []
     d = sources["defaults"]
@@ -45,7 +45,8 @@ def build_tasks(sources, limit_entities=None):
     searched = [e["name"] for e in ents]          # 只有这些机构真被搜过
     for e in ents:
         for q in e.get("queries", []):
-            tasks.append(("entity", e["name"], q, d["limit"]))
+            q_final = f'"{q}"' if quote else q     # 只给机构 query 加引号
+            tasks.append(("entity", e["name"], q_final, d["limit"]))
 
     for s in sources.get("news_sources", []):
         for kw in s.get("keywords", []):
@@ -64,6 +65,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit-entities", type=int, default=None)
     ap.add_argument("--workers", type=int, default=6)
+    ap.add_argument("--quote", action="store_true",
+                    help='给机构 query 加双引号做精确短语匹配。'
+                         '不加的话 Firecrawl 会松散匹配 —— 实测 "Bumrungrad International Hospital" '
+                         '会返回曼谷酒吧火灾新闻，把 limit 占满，真新闻反而被挤出去。')
     args = ap.parse_args()
 
     sources = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))
@@ -74,10 +79,11 @@ def main():
     aggs = filters["aggregator_domains"]
     dd = filters["dedupe"]
 
-    tasks, searched_entities = build_tasks(sources, args.limit_entities)
+    tasks, searched_entities = build_tasks(sources, args.limit_entities, args.quote)
     log("=" * 64)
     log(f"探针启动  {datetime.now(UTC).isoformat()}")
     log(f"实体 {len(searched_entities)}/{len(sources['entities'])} 个 | 搜索任务 {len(tasks)} 条 | tbs={tbs!r}")
+    log(f"精确短语匹配(--quote): {'✅ 开' if args.quote else '❌ 关'}")
     log("=" * 64)
 
     # ---------- 抓取（并发）----------
@@ -122,6 +128,13 @@ def main():
     # ---------- 规范化 ----------
     now = datetime.now(UTC)
     no_date, undated_samples = 0, []
+    # Firecrawl 偶尔漏出 Google News 的相对跳转链接（/goto?url=CAESuQEB...），
+    # 解析不出域名，规范化和去重都会失效。直接剔除。
+    bad_urls = [x for x in raw if not domain_of(x.get("url", ""))]
+    if bad_urls:
+        log(f"\n⚠️ 剔除 {len(bad_urls)} 条无法解析域名的 URL（Google News 跳转链接）")
+        raw = [x for x in raw if domain_of(x.get("url", ""))]
+
     for it in raw:
         it["url_normalized"] = normalize_url(it.get("url", ""), url_cfg)
         it["is_aggregator"] = is_aggregator(it.get("url", ""), aggs)
