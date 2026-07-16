@@ -1,0 +1,338 @@
+# ---------------------------------------------------------------------------
+# 筛选与分类规则
+#
+# 来源：classification_filters.py（上一版最好的一块代码，逻辑几乎原样保留）
+#   - EXCLUDED_EVENT_TYPES  → excluded_event_types
+#   - HEALTHCARE_CORE_...   → healthcare_core_keywords
+#   - NEWS_TYPE_RULES       → event_types
+#   - GOVERNMENT_KEYWORDS   → government_keywords
+#   - run.py::filter_keywords / invalid_title_patterns → noise_keywords / invalid_titles
+#
+# 唯一的结构性改动：原来的 condition lambda 改成 exceptions 列表。
+#   旧: "condition": lambda title, summary: not any(hkw in ... for hkw in [...])
+#   新: exceptions: [...]
+# 语义完全一致：命中 keywords 且【不】命中 exceptions → 排除。
+# 好处：你改规则不用碰代码，且规则可被 diff、可被 review。
+#
+# ⚠️ 修掉的一个不对称：
+#    旧 is_excluded_event_type 只在 title 里找 keywords，却在 title+summary 里找例外。
+#    新版统一在 title + snippet 里找。
+# ---------------------------------------------------------------------------
+
+version: "2026-07-15"
+
+# ===========================================================================
+# 第 0 道：静态页 / 导航页 / 归档页
+# 命中标题即丢弃。来源 run.py::invalid_title_patterns + filter_static_pages
+# ===========================================================================
+invalid_titles:
+  - "archives"
+  - "archive"
+  - "| page"
+  - "page 1"
+  - "page 2"
+  - "page 3"
+  - "page 4"
+  - "category"
+  - "tag:"
+  - "home |"
+  - "about |"
+  - "contact |"
+  - "vision and mission"
+  - "sitemap"
+  - "search results"
+  - "page not found"
+  - "404"
+  - "login"
+  - "register"
+  - "subscribe"
+  - "newsletter"
+  - "- stock analysis"        # 实证：simplywall.st 的股票静态页混进过页面
+  - "stock price"
+  - "share price history"
+
+# ===========================================================================
+# 第 1 道：核心事件类型排除（带例外）
+# 这是上一版最好的设计：排除某类新闻，但如果涉及医疗主体则保留。
+# 例：医院被炸 → 保留；一般军事冲突 → 排除
+# ===========================================================================
+excluded_event_types:
+
+  军事冲突:
+    keywords:
+      ["strike", "bombing", "attack", "military operation", "air strike",
+       "drone attack", "killed in", "casualties from", "iran strike",
+       "israeli strike", "military"]
+    exceptions:
+      ["hospital", "medical center", "medical centre", "healthcare group",
+       "clinic", "doctor", "nurse", "patient care", "health policy",
+       "medical treatment"]
+
+  人物讣闻:
+    keywords:
+      ["dies of", "death of", "obituary", "passed away", "funeral",
+       "memorial", "stewardess", "singer dies", "actor dies",
+       "multi-organ failure"]
+    exceptions:
+      ["hospital ceo", "hospital director", "medical pioneer", "doctor dies",
+       "surgeon dies", "healthcare leader", "medical researcher",
+       "health minister"]
+
+  犯罪事故:
+    keywords:
+      ["murder", "crime", "arrest", "investigation", "trial", "court case",
+       "accident", "crash", "fire at", "stampede", "assault",
+       "run down", "motorcyclist", "hit by"]
+    exceptions:
+      ["hospital safety", "medical error", "patient safety",
+       "healthcare fraud", "hospital fire safety", "medical malpractice"]
+
+  一般政治:
+    keywords:
+      ["election", "vote", "campaign", "poll", "political party",
+       "intelligence chief", "diplomat warns", "foreign minister",
+       "dmk leader", "bjp leader", "congress leader", "opposition leader",
+       "minister says", "returns from", "appears before", "face inquiry",
+       "evading probe", "running away", "hiding"]
+    exceptions:
+      ["health minister", "health policy", "medical reform",
+       "healthcare budget", "ministry of health", "health department"]
+
+  房产广告:
+    keywords:
+      ["condo for rent", "apartment for rent", "property for sale",
+       "house for sale", "land for sale", "real estate listing",
+       "rental listing", "for rent in", "bedroom condo", "studio apartment",
+       "office space for rent", "freehold", "for rent by", "condo for sale",
+       "edgeprop.my", "propertyguru", "iproperty"]
+    exceptions: []          # 始终排除（对应旧代码 lambda: True）
+
+  体育新闻:
+    keywords:
+      ["football match", "basketball game", "cricket match", "tennis",
+       "golf tournament", "sports team", "player signed", "coach",
+       "olympic", "world cup", "championship game", "league",
+       "scored", "win over", "defeated", "victory against"]
+    exceptions:
+      ["sports medicine", "athlete health", "sports injury",
+       "physical therapy", "orthopedic"]
+
+  # 以下三类来自旧 run.py::filter_keywords，原本是无例外的硬排除。
+  # 迁进来后统一加上例外机制。
+  个人生活:
+    keywords:
+      ["baby", "babies", "birth", "born", "pregnant", "pregnancy",
+       "wedding", "marriage", "divorce", "patient story", "patient shares",
+       "miracle", "survivor", "recovery story"]
+    exceptions:
+      ["maternity ward", "fertility clinic", "ivf", "birth rate",
+       "obstetrics", "neonatal", "reproductive health"]
+
+  节庆活动:
+    keywords:
+      ["eid", "festival", "celebration", "holiday", "christmas",
+       "new year", "ramadan", "anniversary", "birthday", "tribute",
+       "ceremony", "award ceremony"]
+    exceptions:
+      ["opening ceremony", "groundbreaking ceremony", "grand opening",
+       "signing ceremony", "accreditation", "jci"]
+      # ⚠️ 医院开业/签约仪式是真动态，不能跟节庆一起丢
+      # 实证：Pop Meals 那条清真认证仪式会被「节庆活动」拦下 ✅
+
+  天气:
+    keywords:
+      ["feels like", "heat wave", "heat & humidity", "heat advisory",
+       "heat warning", "extreme heat"]
+    exceptions:
+      ["heat stroke", "heat related illness", "hospital admissions"]
+
+# ===========================================================================
+# 第 2 道：医疗核心主题硬门槛
+# 必须至少命中一个，否则丢弃。来源 run.py::is_healthcare_relevant
+# 这是你写的那道闸门 —— 旧 is_healthcare_industry_news 只要命中一个泛词
+# （"ai" / "sign" / "board"）就放行，宽得离谱。
+# ===========================================================================
+healthcare_core_keywords:
+  # 医疗机构
+  ["hospital", "clinic", "medical centre", "medical center", "healthcare",
+   "health care", "nursing home", "care home", "rehabilitation", "rehab",
+   # 医疗主体
+   "patient", "doctor", "physician", "surgeon", "nurse", "medical staff",
+   "dentist", "specialist", "consultant",
+   # 医疗行为
+   "surgery", "operation", "treatment", "diagnosis", "diagnostic",
+   "procedure", "medical procedure", "health service", "medical service",
+   # 疾病与治疗领域
+   "cancer", "oncology", "cardiology", "heart", "neurology", "brain",
+   "dialysis", "transplant", "ivf", "fertility", "medical tourism",
+   # 疫情与传染病
+   "dengue", "tuberculosis", "ebola", "malaria", "outbreak", "pandemic",
+   "epidemic", "nipah", "cholera", "measles", "virus", "infection",
+   "infectious",
+   # 医疗政策与监管
+   "health ministry", "ministry of health", "health department",
+   "health authority", "health minister", "health official",
+   "health secretary", "medical regulation", "health regulation",
+   "medical license", "health insurance", "medicare", "medicaid",
+   "health policy", "medical policy", "health system", "healthcare system",
+   "health workforce", "health planning", "health partnership",
+   "global health", "public health",
+   # 健康主题
+   "women's health", "men's health", "child health", "adolescent health",
+   "mental health", "reproductive health", "sexual health",
+   "health screening", "health check", "bone density", "mammogram",
+   # 医疗技术与产品
+   "medical device", "medical equipment", "medical technology",
+   "pharmaceutical", "drug", "medicine", "vaccine", "clinical", "trial",
+   "drug approval",
+   # 中医/亚洲医疗
+   "traditional medicine", "herbal", "中医", "草药", "仿制药", "药房",
+   # 其他
+   "medical use", "medical model", "medical cannabis", "health alert",
+   "telemedicine", "telehealth", "ambulance", "emergency medical",
+   "disease surveillance", "health declaration", "genomics", "genome",
+   "genome sequencing", "life sciences", "biotech", "biotechnology",
+   "glp-1", "weight loss drug", "obesity", "diabetes", "chronic disease",
+   "healthcare giant", "health-care giant", "disease control",
+   "disease prevention"]
+
+# ===========================================================================
+# 第 3 道：事件类型分类
+# priority 小 = 优先级高。一条新闻命中多类时取 priority 最小的。
+# ⚠️ 这 11 个名称必须与飞书「事件类型」单选字段的选项【逐字一致】
+# ===========================================================================
+government_keywords:
+  ["ministry", "government", "minister", "official", "authority",
+   "department", "regulatory", "federal", "state", "policy",
+   "卫生部", "政府", "部长"]
+
+event_types:
+
+  - name: 资本运作
+    priority: 1
+    keywords:
+      ["acquire", "acquisition", "merger", "merge", "buy", "purchase",
+       "sold", "ipo", "listing", "listed", "funding", "investment",
+       "invest", "stake", "equity", "shareholder", "valuation",
+       "private equity"]
+
+  - name: 扩张/新设
+    priority: 2
+    keywords:
+      ["new hospital", "open hospital", "launch hospital", "expand",
+       "expansion", "new branch", "new centre", "new center", "new clinic",
+       "new facility", "construction", "break ground", "grand opening",
+       "enter market"]
+
+  - name: 合作/合资
+    priority: 3
+    keywords:
+      ["partnership", "partner", "collaborate", "collaboration", "alliance",
+       "agreement", "mou", "memorandum", "joint venture", "strategic"]
+
+  - name: 人事变动
+    priority: 4
+    keywords:
+      ["ceo", "chief executive", "appointed", "appointment", "new head",
+       "resign", "resignation", "step down", "promoted", "director"]
+
+  - name: 技术/创新
+    priority: 5
+    keywords:
+      ["ai", "artificial intelligence", "machine learning", "digital",
+       "robot", "robotic", "new technology", "innovation", "smart hospital",
+       "telehealth", "telemedicine"]
+
+  - name: 财务业绩
+    priority: 6
+    keywords:
+      ["revenue", "profit", "earnings", "quarterly", "annual report",
+       "financial results", "sales growth", "ebitda"]
+
+  - name: 认证/荣誉
+    priority: 7
+    keywords:
+      ["jci", "accreditation", "certification", "award", "ranking",
+       "top hospital", "best hospital", "certified"]
+
+  - name: 医疗旅游
+    priority: 8
+    keywords:
+      ["medical tourism", "international patient", "patient from abroad",
+       "overseas patient", "tourism revenue"]
+
+  - name: 政策法规
+    priority: 9
+    require_government_entity: true    # 必须同时命中 government_keywords
+    keywords:
+      ["ministry of health", "health ministry", "health minister",
+       "health policy", "healthcare policy", "regulation", "regulatory",
+       "government", "health reform", "healthcare reform", "legislation",
+       "health law", "medical regulation"]
+
+  - name: 公共卫生
+    priority: 10
+    keywords:
+      ["outbreak", "epidemic", "pandemic", "vaccine", "vaccination",
+       "disease control", "public health", "health alert"]
+
+  - name: 行业新闻
+    priority: 11
+    is_default: true                   # 兜底，前 10 类都没命中时用
+    keywords: []
+
+# ===========================================================================
+# 第 4 道：模型精筛（新增 —— 关键词层拦不住的交给它）
+# ===========================================================================
+# 实证：这两条现在就在你的线上页面上，纯关键词无法拦截
+#   1. "Pop Meals Celebrates Halal Certification with Official Ceremony
+#       at Pantai Hospital Outlet"
+#      → 餐饮品牌在医院门店办活动，Pantai 只是【地点】不是主体
+#   2. "9 Proven Cocaine Rehab Centres in Chiang Mai – 2026 Guide"
+#      → SEO 软文列表页，根本不是新闻
+#
+# 判定结果写入 data/audit/*.jsonl（私有留痕），不进飞书主表、不进网页。
+model_filter:
+  enabled: true
+  model: qwen-plus
+  max_workers: 8
+  timeout: 30
+  criteria:
+    - "这条是不是一则真实的新闻报道？（不是广告、SEO列表页、导航页、股票行情页）"
+    - "目标机构是不是这条新闻的【主体】？（只是提到名字、或仅作为事件发生地点 → 否）"
+    - "这条是不是医疗行业的经营/战略动态？（患者个案、纯科普、活动通稿 → 否）"
+  # 三问全为「是」才入库；任一为「否」→ included=false + reason 落审计日志
+
+# ===========================================================================
+# URL 规范化（新增）
+# ===========================================================================
+# 实证：Firecrawl 返回过这种 URL
+#   http://www.msn.com/en-xl/news/other/ihh-singapore-.../ar-AA27OINR
+#     ?apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1
+#     &batchservertelemetry=1&renderwebcomponents=1&wcseo=1
+# 三个问题叠加：聚合器转载（同一篇文章两个 URL）+ 每次不同的 tracking 参数
+#              + http 而非 https  → URL 去重完全失效
+url_normalize:
+  strip_query_params: true       # 剥掉全部 query（新闻 URL 极少依赖 query）
+  strip_fragment: true           # 剥掉 #anchor
+  force_https: true
+  strip_www: true
+  strip_trailing_slash: true
+
+# 聚合器域名：转载源，同一内容会重复出现。
+# 不直接丢弃（有时只有它有），但标记出来，去重时优先保留原发媒体。
+aggregator_domains:
+  ["msn.com", "news.google.com", "finance.yahoo.com", "news.yahoo.com",
+   "tradingview.com", "simplywall.st", "moomoo.com", "scanx.trade",
+   "investing.com", "marketscreener.com"]
+
+# 去重三道
+dedupe:
+  by_url: true
+  by_title_similarity: 0.80      # 机构新闻，来源 deduplicate_by_similarity
+  by_title_similarity_sea: 0.85  # 东南亚动态，旧代码用的是 0.85
+  prefer_non_aggregator: true    # 标题几乎相同时，保留非聚合器的那条
+
+# 时间窗口
+retention:
+  max_days: 7                    # 网页保留天数；飞书底稿不受此限，全量累积
