@@ -1,0 +1,44 @@
+name: 端到端探针
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit_entities:
+        description: '只跑前 N 个机构（留空=全部 26 个）'
+        required: false
+        default: ''
+      no_model:
+        description: '跳过模型，只跑规则层（省钱）'
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  pipeline:
+    name: 抓取 → 筛选 → 富化
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests pyyaml
+      - name: 跑流水线
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.limit_entities }}" ]; then
+            ARGS="$ARGS --limit-entities ${{ github.event.inputs.limit_entities }}"
+          fi
+          if [ "${{ github.event.inputs.no_model }}" = "true" ]; then ARGS="$ARGS --no-model"; fi
+          python src/probe_pipeline.py $ARGS
+      - name: 上传结果
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-output
+          path: probe_output/
+          retention-days: 7
