@@ -1,0 +1,33 @@
+# ===== 密钥：绝不能进 public 仓 =====
+.env
+.env.*
+*.key
+*.pem
+config/feishu.json
+config/*.local.yaml
+secrets/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ===== 运行时临时文件 =====
+data/raw/
+data/tmp/
+*.log
+tmp/
+.cache/
+
+# ===== 系统 / 编辑器 =====
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
