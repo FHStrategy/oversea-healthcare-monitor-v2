@@ -160,7 +160,10 @@ class AliasIndex:
         pairs = []
         for e in entities:
             for a in e.get("aliases", []):
-                pat = re.compile(rf"\b{re.escape(a.lower())}\b", re.I)
+                # s? = 允许可选复数。没有它的话 \bapollo hospital\b 匹配不上
+                # "Apollo Hospitals" —— 结尾的 s 挡住了词边界。
+                # 实测：Apollo / Pantai / Fortis 两轮探针都 0 条，就是栽在这里。
+                pat = re.compile(rf"\b{re.escape(a.lower())}s?\b", re.I)
                 pairs.append((a.lower(), e["name"], pat))
         # 长的排前面 —— "parkway east"(12) 要先于 "parkway"(7) 被检查
         pairs.sort(key=lambda x: len(x[0]), reverse=True)
