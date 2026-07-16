@@ -265,11 +265,20 @@ event_types:
 
   - name: 扩张/新设
     priority: 2
+    # 2026-07-15 实证：下面两条明显是新建项目，却被判成「行业新闻」——
+    #   "Selangor identifies Taman Medan as preferred site for new Petaling Jaya hospital"
+    #   "Hospital-hotel project at Penang's Taman Manggis slated for 2029 completion"
+    # 原因：关键词是 "new hospital" 这个【连续短语】，而标题里插了地名
+    # （"new Petaling Jaya hospital"）。补上项目/选址/竣工类词。
     keywords:
       ["new hospital", "open hospital", "launch hospital", "expand",
        "expansion", "new branch", "new centre", "new center", "new clinic",
        "new facility", "construction", "break ground", "grand opening",
-       "enter market"]
+       "enter market", "hospital project", "hospital-hotel project",
+       "medical centre project", "site for new", "preferred site",
+       "slated for completion", "targets completion", "completion by",
+       "to be built", "under construction", "project resumes",
+       "project to restart", "new wing", "new block", "new tower"]
 
   - name: 合作/合资
     priority: 3
