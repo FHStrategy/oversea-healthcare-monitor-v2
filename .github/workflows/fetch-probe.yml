@@ -12,6 +12,11 @@ on:
         description: '并发数'
         required: false
         default: '6'
+      quote:
+        description: '给机构 query 加双引号做精确短语匹配（A/B 对照用）'
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   probe:
@@ -36,6 +41,7 @@ jobs:
           if [ -n "${{ github.event.inputs.limit_entities }}" ]; then
             ARGS="$ARGS --limit-entities ${{ github.event.inputs.limit_entities }}"
           fi
+          if [ "${{ github.event.inputs.quote }}" = "true" ]; then ARGS="$ARGS --quote"; fi
           echo "运行: python src/probe_fetch.py $ARGS"
           python src/probe_fetch.py $ARGS
 
