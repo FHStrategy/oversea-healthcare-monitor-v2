@@ -152,27 +152,61 @@ def parse_date(raw: Optional[str], now: Optional[datetime] = None) -> Optional[d
 
 @dataclass
 class AliasIndex:
-    """别名 -> 实体。按别名长度降序，保证最长匹配优先。"""
-    pairs: List[Tuple[str, str, re.Pattern]] = field(default_factory=list)
+    """
+    别名 -> 实体。长度降序，最长匹配优先。
+
+    两档别名：
+      aliases       强别名。命中即算。
+      weak_aliases  弱别名。【只有同文出现医疗核心词时才算命中】。
+
+    弱别名解决的问题（2026-07-16 实证）：
+      "The minority shareholder's day in the sun"
+      摘要: "Fortis' takeover by an international healthcare chain..."
+      —— 这是 IHH 收购 Fortis 的分析，核心情报。但标题只说 minority shareholder，
+      只有正文提到裸 "fortis"。而我们把裸 "fortis" 删了，因为
+      Fortis Inc. 是加拿大上市公用事业公司，新闻量不小。
+    弱别名两头兼顾：
+      "Fortis Inc reports higher electricity rates"     无医疗核心词 -> 不匹配 ✅
+      "Fortis' takeover by international healthcare..." 有 healthcare -> 匹配   ✅
+    精度由下游模型精筛的 is_subject 兜底
+    （"Apollo Tyres 与医院合作体检" 这种会被模型判掉）。
+    """
+    pairs: List[Tuple[str, str, re.Pattern, bool]] = field(default_factory=list)
+    core_pat: Optional[re.Pattern] = None
 
     @classmethod
-    def build(cls, entities: List[Dict[str, Any]]) -> "AliasIndex":
+    def build(cls, entities: List[Dict[str, Any]],
+              core_keywords: Optional[List[str]] = None) -> "AliasIndex":
         pairs = []
         for e in entities:
             for a in e.get("aliases", []):
-                # s? = 允许可选复数。没有它的话 \bapollo hospital\b 匹配不上
-                # "Apollo Hospitals" —— 结尾的 s 挡住了词边界。
-                # 实测：Apollo / Pantai / Fortis 两轮探针都 0 条，就是栽在这里。
-                pat = re.compile(rf"\b{re.escape(a.lower())}s?\b", re.I)
-                pairs.append((a.lower(), e["name"], pat))
+                pairs.append((a.lower(), e["name"], cls._pat(a), False))
+            for a in e.get("weak_aliases", []) or []:
+                pairs.append((a.lower(), e["name"], cls._pat(a), True))
         # 长的排前面 —— "parkway east"(12) 要先于 "parkway"(7) 被检查
         pairs.sort(key=lambda x: len(x[0]), reverse=True)
-        return cls(pairs=pairs)
+
+        core_pat = None
+        if core_keywords:
+            wordy = [k for k in core_keywords if re.match(r"^\w.*\w$", k)]
+            core_pat = re.compile(
+                "|".join(rf"\b{re.escape(k.lower())}s?\b" for k in wordy), re.I)
+        return cls(pairs=pairs, core_pat=core_pat)
+
+    @staticmethod
+    def _pat(a: str) -> re.Pattern:
+        # s? = 允许可选复数。没有它的话 \bapollo hospital\b 匹配不上
+        # "Apollo Hospitals" —— 结尾的 s 挡住了词边界。
+        # 实测：Apollo / Pantai / Fortis 两轮探针都 0 条，就是栽在这里。
+        return re.compile(rf"\b{re.escape(a.lower())}s?\b", re.I)
 
     def match(self, text: str) -> Optional[Tuple[str, str]]:
         """返回 (实体名, 命中的别名)；没命中返回 None。"""
         low = (text or "").lower()
-        for alias, entity, pat in self.pairs:
+        has_core = bool(self.core_pat.search(low)) if self.core_pat else True
+        for alias, entity, pat, weak in self.pairs:
+            if weak and not has_core:
+                continue          # 弱别名必须有医疗核心词背书
             if pat.search(low):
                 return entity, alias
         return None
