@@ -1,0 +1,48 @@
+name: 飞书写入探针
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: '模式'
+        type: choice
+        required: true
+        default: 'dry-run'
+        options:
+          - dry-run
+          - synthetic
+          - real
+      limit_entities:
+        description: '只跑前 N 个机构（real 模式留空=全部）'
+        required: false
+        default: ''
+
+jobs:
+  probe:
+    name: 飞书写入
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests pyyaml
+      - name: 跑探针
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_BASE_TOKEN: ${{ secrets.FEISHU_BASE_TOKEN }}
+          FEISHU_TABLE_ID: ${{ secrets.FEISHU_TABLE_ID }}
+        run: |
+          ARGS=""
+          case "${{ github.event.inputs.mode }}" in
+            dry-run)   ARGS="--dry-run" ;;
+            synthetic) ARGS="--synthetic" ;;
+          esac
+          if [ -n "${{ github.event.inputs.limit_entities }}" ]; then
+            ARGS="$ARGS --limit-entities ${{ github.event.inputs.limit_entities }}"
+          fi
+          python src/probe_feishu.py $ARGS
