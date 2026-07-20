@@ -50,6 +50,21 @@ invalid_titles:
   - "- stock analysis"        # 实证：simplywall.st 的股票静态页混进过页面
   - "stock price"
   - "share price history"
+  # 医院官网静态页 —— 2026-07-20 dry-run 实证混进过：
+  #   "Logo HSNZ"（医院 Logo 下载页）
+  #   "Home - Cotabato Regional and Medical Center"（官网首页）
+  - "home -"
+  - "- home"
+  - "logo "
+  - " logo"
+  - "official website"
+  - "welcome to"
+  - "homepage"
+  - "official portal"
+  - "e-services"
+  - "downloads"
+  - "gallery"
+  - "photo gallery"
 
 # ===========================================================================
 # 第 1 道：核心事件类型排除（带例外）
