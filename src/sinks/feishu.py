@@ -188,3 +188,35 @@ def write(items: List[Dict[str, Any]], sources: Dict[str, Any]
 
     ok, errors = b.batch_create([to_record(i, emap) for i in new])
     return ok, skipped, errors
+
+
+# ---------------------------------------------------------------------------
+# 失败告警
+# ---------------------------------------------------------------------------
+
+def send_alert(text: str) -> bool:
+    """
+    发飞书告警给 ALERT_OPEN_ID。发送本身失败不抛异常（避免"告警失败"
+    掩盖"原始失败"），只返回 bool 并打印。飞书机器人主动发消息不需要
+    用户先建会话 —— 2026-07 whoami 验证过。
+    """
+    import json
+    open_id = os.environ.get("ALERT_OPEN_ID")
+    if not open_id:
+        print("⚠️ 未配置 ALERT_OPEN_ID，跳过飞书告警")
+        return False
+    try:
+        token = get_token()
+        r = requests.post(
+            f"{BASE}/im/v1/messages?receive_id_type=open_id",
+            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+            json={"receive_id": open_id, "msg_type": "text",
+                  "content": json.dumps({"text": text}, ensure_ascii=False)},
+            timeout=15,
+        )
+        ok = r.json().get("code") == 0
+        print("✅ 告警已发送" if ok else f"⚠️ 告警发送失败: {r.text[:200]}")
+        return ok
+    except Exception as e:
+        print(f"⚠️ 告警发送异常: {e}")
+        return False
