@@ -1,0 +1,68 @@
+name: 每日运行
+
+on:
+  schedule:
+    - cron: '0 4 * * *'      # UTC 04:00 = 北京时间 12:00
+  workflow_dispatch:          # 支持手动触发（先手动跑通再依赖定时）
+
+# 只允许一个实例在跑，避免定时和手动撞车导致 articles.json 冲突
+concurrency:
+  group: daily-run
+  cancel-in-progress: false
+
+permissions:
+  contents: write             # 需要 commit data/ 回仓
+  pages: write                # 部署 Pages
+  id-token: write
+
+jobs:
+  run:
+    name: 抓取 → 筛选 → 富化 → 飞书 + 网页
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests pyyaml
+
+      - name: 运行流水线
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          FEISHU_APP_ID:     ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_BASE_TOKEN: ${{ secrets.FEISHU_BASE_TOKEN }}
+          FEISHU_TABLE_ID:   ${{ secrets.FEISHU_TABLE_ID }}
+          ALERT_OPEN_ID:     ${{ secrets.ALERT_OPEN_ID }}
+        run: python src/run.py
+
+      # 把 7 天窗口数据 + 审计日志 commit 回仓（runner 无状态，不 commit 就丢）
+      - name: 提交数据
+        if: success()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "无数据变更"
+          else
+            git commit -m "data: $(date -u +%Y-%m-%d) 每日更新"
+            git push
+          fi
+
+      # 部署网页到 Pages
+      - name: 配置 Pages
+        if: success()
+        uses: actions/configure-pages@v5
+      - name: 上传网页
+        if: success()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - name: 部署 Pages
+        if: success()
+        uses: actions/deploy-pages@v4
