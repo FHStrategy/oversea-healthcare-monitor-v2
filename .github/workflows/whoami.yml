@@ -1,0 +1,30 @@
+name: 查询 open_id
+
+on:
+  workflow_dispatch:
+    inputs:
+      mobile:
+        description: '手机号（如 13800138000，会自动加 +86）'
+        required: false
+        default: ''
+      email:
+        description: '邮箱（手机号和邮箱填一个即可）'
+        required: false
+        default: ''
+
+jobs:
+  whoami:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests pyyaml
+      - name: 换 open_id + 发测试消息
+        env:
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+        run: |
+          python src/whoami.py --mobile "${{ github.event.inputs.mobile }}" --email "${{ github.event.inputs.email }}"
