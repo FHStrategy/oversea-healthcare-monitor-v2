@@ -2,7 +2,7 @@ name: 每日运行
 
 on:
   schedule:
-    - cron: '0 4 * * *'      # UTC 04:00 = 北京时间 12:00
+    - cron: '17 3 * * *'      # 北京时间 11:17高峰时间action被推迟)
   workflow_dispatch:          # 支持手动触发（先手动跑通再依赖定时）
 
 # 只允许一个实例在跑，避免定时和手动撞车导致 articles.json 冲突
