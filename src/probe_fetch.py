@@ -53,6 +53,13 @@ def build_tasks(sources, limit_entities=None, quote=False):
             tasks.append(("news_source", s["name"], f'site:{s["site"]} {kw}', 5))
 
     sea = sources.get("sea_health", {})
+    # 东南亚隔天跑省 credit：run_every_n_days=2 时，偶数天(北京)才跑。
+    from datetime import datetime, timezone, timedelta
+    every = sea.get("run_every_n_days", 1)
+    cn_day = (datetime.now(timezone.utc) + timedelta(hours=8)).timetuple().tm_yday
+    sea_today = (every <= 1) or (cn_day % every == 0)
+    if not sea_today:
+        sea = {}  # 今天跳过东南亚
     for c in sea.get("countries", []):
         for site in c["sites"][: sea.get("max_sites_per_country", 1)]:
             for kw in sea.get("keywords", [])[: sea.get("max_keywords_per_site", 2)]:
