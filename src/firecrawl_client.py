@@ -41,7 +41,7 @@ def search_news(
     query: str,
     limit: int = 10,
     tbs: str = "qdr:d,sbd:1",
-    max_retries: int = 3,
+    max_retries: int = 5,
     timeout: int = 90,
 ) -> List[Dict[str, Any]]:
     """
@@ -71,10 +71,12 @@ def search_news(
             time.sleep(2 * attempt)
             continue
 
-        # 429 = 限流，退避重试
+        # 429 = 限流。指数退避：15/30/60/120/240s。
+        # 限流靠"更快重试"没用，只会火上浇油，必须主动等更久。
         if r.status_code == 429:
-            wait = 5 * attempt
-            last_err = f"429 限流，等待 {wait}s"
+            wait = 15 * (2 ** (attempt - 1))
+            last_err = f"429 限流，等待 {wait}s（第 {attempt}/{max_retries} 次）"
+            print(f"  ⏳ {query[:40]} 被限流，退避 {wait}s", flush=True)
             time.sleep(wait)
             continue
 
