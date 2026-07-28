@@ -18,12 +18,28 @@ Firecrawl v2 搜索客户端。
 """
 
 import os
+import threading
 import time
 from typing import Any, Dict, List
 
 import requests
 
 API_URL = "https://api.firecrawl.dev/v2/search"
+
+# 全局限速器:免费套餐 search 限 5次/分钟。
+# 每 13 秒放行一个请求(留 1 秒余量),从源头避免 429，比撞墙后退避稳。
+# 环境变量 FIRECRAWL_MIN_INTERVAL 可覆盖(升级套餐后可调小)。
+_MIN_INTERVAL = float(os.environ.get("FIRECRAWL_MIN_INTERVAL", "13"))
+_rate_lock = threading.Lock()
+_last_call = [0.0]
+
+
+def _throttle():
+    with _rate_lock:
+        wait = _last_call[0] + _MIN_INTERVAL - time.monotonic()
+        if wait > 0:
+            time.sleep(wait)
+        _last_call[0] = time.monotonic()
 
 
 class FirecrawlError(Exception):
@@ -34,6 +50,76 @@ def _api_key() -> str:
     key = os.environ.get("FIRECRAWL_API_KEY")
     if not key:
         raise FirecrawlError("环境变量 FIRECRAWL_API_KEY 缺失")
+    return key
+
+
+def search_news(
+    query: str,
+    limit: int = 10,
+    tbs: str = "qdr:d,sbd:1",
+    max_retries: int = 5,
+    timeout: int = 90,
+) -> List[Dict[str, Any]]:
+    """
+    搜一次新闻。
+
+    返回 news 条目列表，每条形如：
+      {"title":..., "url":..., "snippet":..., "date":"4 hours ago",
+       "imageUrl":..., "position": 1}
+
+    失败会抛 FirecrawlError，不返回空列表 —— 这是刻意的。
+    旧代码 `except: return []` 会把「搜索挂了」伪装成「今天没新闻」。
+    """
+    headers = {
+        "Authorization": f"Bearer {_api_key()}",
+        "Content-Type": "application/json",
+    }
+    payload = {"query": query, "sources": ["news"], "limit": limit}
+    if tbs:
+        payload["tbs"] = tbs
+
+    last_err = None
+    for attempt in range(1, max_retries + 1):
+        _throttle()   # 每个请求前先过限速器
+        try:
+            r = requests.post(API_URL, headers=headers, json=payload, timeout=timeout)
+        except Exception as e:
+            last_err = f"请求异常: {e}"
+            time.sleep(2 * attempt)
+            continue
+
+        # 429 = 限流。指数退避：15/30/60/120/240s。
+        # 限流靠"更快重试"没用，只会火上浇油，必须主动等更久。
+        if r.status_code == 429:
+            wait = 15 * (2 ** (attempt - 1))
+            last_err = f"429 限流，等待 {wait}s（第 {attempt}/{max_retries} 次）"
+            print(f"  ⏳ {query[:40]} 被限流，退避 {wait}s", flush=True)
+            time.sleep(wait)
+            continue
+
+        if r.status_code != 200:
+            last_err = f"HTTP {r.status_code}: {r.text[:200]}"
+            # 4xx 基本是请求本身有问题，重试没意义
+            if 400 <= r.status_code < 500:
+                break
+            time.sleep(2 * attempt)
+            continue
+
+        try:
+            body = r.json()
+        except Exception as e:
+            last_err = f"响应不是合法 JSON: {e}"
+            break
+
+        data = body.get("data", {})
+        # 防御：带 sources 时是 dict，理论上不会是数组，但万一 API 变了要能看出来
+        if isinstance(data, list):
+            raise FirecrawlError(
+                f"data 是数组而非 dict —— sources 参数可能失效了。query={query!r}"
+            )
+        return data.get("news", []) or []
+
+    raise FirecrawlError(f"query={query!r} 重试 {max_retries} 次仍失败: {last_err}")
     return key
 
 
