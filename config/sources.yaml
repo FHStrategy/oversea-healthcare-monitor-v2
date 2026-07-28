@@ -300,19 +300,19 @@ boards:
 news_sources:
   - name: Healthcare Asia News
     site: healthcareasia.asia
-    keywords: ["hospital", "healthcare", "medical tourism"]
+    keywords: []                          # 关键词交给机构query覆盖，本源暂停省credit(原3个),省credit
 
   - name: Medical Tourism Association
     site: medicaltourismassociation.com
-    keywords: ["medical tourism", "international patient"]
+    keywords: ["medical tourism"]         # 砍到1个
 
   - name: Hospital Management
     site: hospitalmanagement.net
-    keywords: ["hospital", "healthcare management"]
+    keywords: ["hospital"]                # 砍到1个
 
   - name: Healthcare Global
     site: healthcareglobal.com
-    keywords: ["healthcare", "hospital", "medical"]
+    keywords: ["healthcare"]              # 砍到1个
 
 
 # ===================== 东南亚卫生动态 =====================
@@ -322,9 +322,11 @@ news_sources:
 # 新版把限制显式写在这里，不再藏在代码里。
 
 sea_health:
-  max_sites_per_country: 1     # 旧代码的 sites[:1]，先保持一致
-  max_keywords_per_site: 2     # 旧代码的 keywords[:2]，先保持一致
+  max_sites_per_country: 1
+  max_keywords_per_site: 1     # 2 -> 1，省 credit（政策新闻更新慢，1个关键词够）
   limit: 3
+  run_every_n_days: 3          # 每3天跑一次 —— 东南亚政策不会一天一变，隔天足够
+                               # 每3天跑一次东南亚，政策新闻更新慢，足够
 
   keywords:
     - "healthcare policy"
