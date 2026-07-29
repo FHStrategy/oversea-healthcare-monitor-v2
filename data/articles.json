@@ -1728,37 +1728,5 @@
     "_event_type_source": "model",
     "title_zh": "Aster DM医疗保健旗下Aster DM质量护理获FE医疗健康奖2026大奖",
     "summary_zh": "印度最大医疗保健提供商之一Aster DM医疗保健旗下的Aster DM质量护理再次获得国家级FE医疗健康奖2026大奖。"
-  },
-  {
-    "title": "Daily Brief Health Care: JBM (Healthcare), Immvira Bioscience, Bumrungrad Hospital, High Tide , National Healthcare and more",
-    "url": "https://www.smartkarma.com/home/daily-briefs/daily-brief-health-care-jbm-healthcare-immvira-bioscience-bumrungrad-hospital-high-tide-national-healthcare-and-more/",
-    "snippet": "# Daily Brief Health Care: JBM (Healthcare), Immvira Bioscience, Bumrungrad Hospital, High Tide , National Healthcare and more\n## [Bumrungrad Versus Bangkok Dusit Medical: Will the Divergent Trend Continue?](https://www.smartkarma.com/insights/bumrungrad-versus-bangkok-dusit-medical-will-the-divergent-trend-continue)\n- [Bumrungrad Hospital (BH TB)](https://www.smartkarma.com/entities/bumrungrad-hospital-public-co-ltd) shares advanced 27% over the last one year, while its larger peer [Bangkok Dusit Medical Services (BDMS TB)](https://www.smartkarma.com/entities/bangkok-dusit-medical-services-public-co-ltd) shares fell 8% over the same period.",
-    "date": "4 hours ago",
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc_MptXon9v3lGLSVnp8HzUoRwOp3Z-AxbaiK5mkRscXoX_znBKWRuSEM&usqp=CAI&s",
-    "position": 5,
-    "_kind": "entity",
-    "_query_owner": "Bumrungrad International Hospital",
-    "_query": "Bumrungrad Hospital",
-    "url_normalized": "https://smartkarma.com/home/daily-briefs/daily-brief-health-care-jbm-healthcare-immvira-bioscience-bumrungrad-hospital-high-tide-national-healthcare-and-more",
-    "is_aggregator": false,
-    "published_at": "2026-07-22T02:22:22.235900+00:00",
-    "matched_entity": "BDMS (Bangkok Dusit Medical Services)",
-    "matched_alias": "bangkok dusit",
-    "_core_keyword": "hospital",
-    "_model_reason": "对比BDMS与Bumrungrad财务趋势",
-    "_model_verdict": {
-      "is_news": true,
-      "is_subject": true,
-      "is_industry": true,
-      "event_type": "财务业绩",
-      "reason": "对比BDMS与Bumrungrad财务趋势"
-    },
-    "_model_event_type": "财务业绩",
-    "event_type": "财务业绩",
-    "_event_type_rule": "行业新闻",
-    "_event_type_model": "财务业绩",
-    "_event_type_source": "model",
-    "title_zh": "曼谷医院与曼谷都喜医疗：分化趋势是否会持续？",
-    "summary_zh": "曼谷医院（BH TB）股价一年上涨27%，而其主要同业曼谷都喜医疗服务（BDMS TB）走势分化。两者表现差异引发市场对其长期趋势的持续关注。"
   }
 ]
