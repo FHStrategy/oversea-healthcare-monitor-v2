@@ -70,7 +70,7 @@ def _one(item: Dict[str, Any], model: str, timeout: int) -> Dict[str, str]:
     return {"title_zh": t, "summary_zh": s}
 
 
-def run(items: List[Dict[str, Any]], model: str = "qwen-plus",
+def run(items: List[Dict[str, Any]], model: str = "qwen3.7-flash-2026-07-15",
         max_workers: int = 8, timeout: int = 30
         ) -> Tuple[List[Dict[str, Any]], List[Tuple[str, str]]]:
     """
