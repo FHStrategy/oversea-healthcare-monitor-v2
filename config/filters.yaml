@@ -365,7 +365,7 @@ event_types:
 # 判定结果写入 data/audit/*.jsonl（私有留痕），不进飞书主表、不进网页。
 model_filter:
   enabled: true
-  model: qwen-plus
+  model: qwen3.7-flash-2026-07-15
   max_workers: 8
   timeout: 30
   criteria:
