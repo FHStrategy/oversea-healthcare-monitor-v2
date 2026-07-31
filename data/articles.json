@@ -11,25 +11,25 @@
     "_query": "Singapore General Hospital",
     "url_normalized": "https://healthcareitnews.com/news/asia/nuhs-save-850-staff-hours-weekly-new-pharma-ai",
     "is_aggregator": false,
-    "published_at": "2026-07-31T01:55:46.153350+00:00",
+    "published_at": "2026-07-31T04:26:18.069499+00:00",
     "matched_entity": "Singapore General Hospital",
     "matched_alias": "singapore general hospital",
     "_core_keyword": "hospital",
-    "_model_reason": "新加坡总院研发AI优化处方，属技术创新动态",
+    "_model_reason": "新加坡总院研发AI优化抗生素处方，属技术创新",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "技术/创新",
-      "reason": "新加坡总院研发AI优化处方，属技术创新动态"
+      "reason": "新加坡总院研发AI优化抗生素处方，属技术创新"
     },
     "_model_event_type": "技术/创新",
     "event_type": "技术/创新",
     "_event_type_rule": "技术/创新",
     "_event_type_model": "技术/创新",
     "_event_type_source": "model",
-    "title_zh": "新加坡国立大学医疗系统引入新型医药AI，每周节省850工时",
-    "summary_zh": "新加坡中央医院开发AI模型，用于判断患者是否需要抗生素并推荐最适处方，以提升临床用药精准度。"
+    "title_zh": "新加坡国立大学医疗系统借助新型医药AI每周节省850工时",
+    "summary_zh": "新加坡中央医院开发AI模型，用于判断患者是否需要抗生素并推荐合适处方。该应用预计每周可为医护人员节省850工时。"
   },
   {
     "title": "Positive outlook for healthcare sector on soft-landing mechanism",
@@ -43,17 +43,17 @@
     "_query": "IHH Healthcare",
     "url_normalized": "https://thestar.com.my/business/business-news/2026/07/31/positive-outlook-for-healthcare-sector-on-soft-landing-mechanism",
     "is_aggregator": false,
-    "published_at": "2026-07-30T22:55:46.153350+00:00",
+    "published_at": "2026-07-31T01:26:18.069499+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "healthcare",
-    "_model_reason": "券商研报分析马来西亚医疗行业前景",
+    "_model_reason": "券商发布医疗行业展望报告，属行业动态",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "行业新闻",
-      "reason": "券商研报分析马来西亚医疗行业前景"
+      "reason": "券商发布医疗行业展望报告，属行业动态"
     },
     "_model_event_type": "行业新闻",
     "event_type": "行业新闻",
@@ -62,7 +62,7 @@
     "_event_type_source": "model",
     "board": "行业动态",
     "title_zh": "软着陆机制下医疗行业前景乐观",
-    "summary_zh": "尽管面临全球挑战，医疗行业持续展现韧性。RHB研究指出多项关键因素将支撑该板块发展。"
+    "summary_zh": "尽管面临全球挑战，医疗行业仍持续展现韧性。RHB研究所在报告中指出多项关键因素。"
   },
   {
     "title": "My father’s journey taught me that leadership isn’t defined by titles or milestones: Alisha Moopen, deputy",
@@ -76,25 +76,25 @@
     "_query": "Apollo Hospitals India",
     "url_normalized": "https://m.economictimes.com/news/company/corporate-trends/my-fathers-journey-taught-me-that-leadership-isnt-defined-by-titles-or-milestones-alisha-moopen-deputy-md-aster-dm-healthcare/articleshow/132749692.cms",
     "is_aggregator": false,
-    "published_at": "2026-07-30T19:55:46.153350+00:00",
+    "published_at": "2026-07-30T22:26:18.069499+00:00",
     "matched_entity": "Aster DM Healthcare",
     "matched_alias": "aster dm",
     "_core_keyword": "healthcare",
-    "_model_reason": "高管获商业领袖奖，属企业荣誉动态",
+    "_model_reason": "报道高管获奖及企业地位，属医疗集团企业荣誉。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "认证/荣誉",
-      "reason": "高管获商业领袖奖，属企业荣誉动态"
+      "reason": "报道高管获奖及企业地位，属医疗集团企业荣誉。"
     },
     "_model_event_type": "认证/荣誉",
     "event_type": "认证/荣誉",
     "_event_type_rule": "认证/荣誉",
     "_event_type_model": "认证/荣誉",
     "_event_type_source": "model",
-    "title_zh": "父亲的历程让我明白领导力不取决于头衔或里程碑：副董事长阿丽莎·穆潘",
-    "summary_zh": "阿丽莎·穆潘因果断决策荣获NextGen商业领袖奖。Aster DM Healthcare现已成为印度第二大医疗连锁集团。"
+    "title_zh": "父亲的历程让我明白领导力不取决于头衔或里程碑：Alisha Moopen",
+    "summary_zh": "Alisha Moopen因果断决策荣获NextGen商业领袖奖。Aster DM Healthcare现已成为印度第二大医疗连锁机构。"
   },
   {
     "title": "ET Family Business Awards' winners in the limelight: Apollo Hospitals and Muthoot FinCorp",
@@ -108,17 +108,17 @@
     "_query": "Apollo Hospitals India",
     "url_normalized": "https://m.economictimes.com/news/company/corporate-trends/et-family-business-awards-winners-in-the-limelight-apollo-hospitals-and-muthoot-fincorp/articleshow/132749039.cms",
     "is_aggregator": false,
-    "published_at": "2026-07-30T18:55:46.153350+00:00",
+    "published_at": "2026-07-30T21:26:18.069499+00:00",
     "matched_entity": "Apollo Hospitals",
     "matched_alias": "apollo hospital",
     "_core_keyword": "hospital",
-    "_model_reason": "阿波罗医院获家族企业奖，属企业荣誉动态",
+    "_model_reason": "医院获家族企业奖，属企业荣誉动态",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "认证/荣誉",
-      "reason": "阿波罗医院获家族企业奖，属企业荣誉动态"
+      "reason": "医院获家族企业奖，属企业荣誉动态"
     },
     "_model_event_type": "认证/荣誉",
     "event_type": "认证/荣誉",
@@ -126,7 +126,7 @@
     "_event_type_model": "认证/荣誉",
     "_event_type_source": "model",
     "title_zh": "经济时报家族企业奖获奖者受瞩目：阿波罗医院与穆特金融公司",
-    "summary_zh": "阿波罗医院与穆特金融公司荣获知名家族企业奖项。普丽塔·雷迪借此强调了阿波罗医院致力于提供可及性医疗服务的承诺。"
+    "summary_zh": "阿波罗医院与穆特金融公司荣获知名家族企业奖项。普丽塔·雷迪强调，阿波罗医院致力于提升医疗服务的可及性。"
   },
   {
     "title": "Ministry to look into fake medical records",
@@ -136,21 +136,21 @@
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNwqxu69oIYgv_mIK19mFzTfUK7B8V61ZjSEm-4eR377akJXnmarPNYMw&usqp=CAI&s",
     "position": 1,
     "_kind": "entity",
-    "_query_owner": "Bumrungrad International Hospital",
-    "_query": "Bumrungrad Hospital",
+    "_query_owner": "Bangkok Hospital Group",
+    "_query": "Bangkok Hospital Thailand",
     "url_normalized": "https://bangkokpost.com/thailand/general/3294257/ministry-to-look-into-fake-medical-records",
     "is_aggregator": false,
-    "published_at": "2026-07-30T17:55:46.153350+00:00",
+    "published_at": "2026-07-30T20:26:18.069499+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "medicine",
-    "_model_reason": "卫生部调查医疗记录造假，属监管动态",
+    "_model_reason": "卫生部调查病历造假，属监管执法动态",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "政策法规",
-      "reason": "卫生部调查医疗记录造假，属监管动态"
+      "reason": "卫生部调查病历造假，属监管执法动态"
     },
     "_model_event_type": "政策法规",
     "event_type": "政策法规",
@@ -158,8 +158,8 @@
     "_event_type_model": "政策法规",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "卫生部将调查虚假医疗记录",
-    "summary_zh": "超80人发现健康记录中含未就诊病史及药品报销信息，怀疑遭滥用并已举报。该情况已引起卫生部门关注并启动核查。"
+    "title_zh": "卫生部门将调查伪造医疗记录事件",
+    "summary_zh": "超80人发现健康档案中含未就诊病历及药品报销记录，已举报遭疑似滥用。该情况已促使有关部门介入核查。"
   },
   {
     "title": "Fortis Healthcare Schedules Q1 Earnings Call For August 7",
@@ -173,25 +173,25 @@
     "_query": "Fortis Healthcare India",
     "url_normalized": "https://sahi.com/news/fortis-healthcare-schedules-q1-earnings-call-for-august-7-3390-PE1_COR",
     "is_aggregator": false,
-    "published_at": "2026-07-30T15:55:46.153350+00:00",
+    "published_at": "2026-07-30T18:26:18.069499+00:00",
     "matched_entity": "Fortis Healthcare",
     "matched_alias": "fortis healthcare",
     "_core_keyword": "healthcare",
-    "_model_reason": "报道Fortis召开Q1财报会，属财务业绩动态。",
+    "_model_reason": "报道企业季度财报会议安排，属财务业绩动态",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "财务业绩",
-      "reason": "报道Fortis召开Q1财报会，属财务业绩动态。"
+      "reason": "报道企业季度财报会议安排，属财务业绩动态"
     },
     "_model_event_type": "财务业绩",
     "event_type": "财务业绩",
     "_event_type_rule": "财务业绩",
     "_event_type_model": "财务业绩",
     "_event_type_source": "model",
-    "title_zh": "富仕医疗定于8月7日举行第一季度财报电话会议",
-    "summary_zh": "富仕医疗将于2026年8月7日召开2027财年首季财报电话会议，以讨论公司季度财务业绩。"
+    "title_zh": "富通医疗定于8月7日举行一季度财报电话会议",
+    "summary_zh": "富通医疗将于2026年8月7日董事会后举行一季度财报电话会议，旨在讨论季度财务数据。"
   },
   {
     "title": "HLIB Downgrades Sunway Healthcare To HOLD",
@@ -205,25 +205,25 @@
     "_query": "Sunway Medical Centre Malaysia",
     "url_normalized": "https://businesstoday.com.my/2026/07/30/hlib-downgrades-sunway-healthcare-to-hold",
     "is_aggregator": false,
-    "published_at": "2026-07-30T14:55:46.153350+00:00",
+    "published_at": "2026-07-30T17:26:18.069499+00:00",
     "matched_entity": "Sunway Medical Centre",
     "matched_alias": "sunway healthcare",
     "_core_keyword": "healthcare",
-    "_model_reason": "券商下调医疗集团评级，属财务市场动态。",
+    "_model_reason": "投行下调阳光医疗控股评级至持有",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "财务业绩",
-      "reason": "券商下调医疗集团评级，属财务市场动态。"
+      "reason": "投行下调阳光医疗控股评级至持有"
     },
     "_model_event_type": "财务业绩",
     "event_type": "财务业绩",
     "_event_type_rule": "资本运作",
     "_event_type_model": "财务业绩",
     "_event_type_source": "model",
-    "title_zh": "丰隆投资银行将双威医疗评级下调至“持有”",
-    "summary_zh": "丰隆投资银行将双威医疗评级从“买入”下调至“持有”，同时维持2.05令吉的目标价不变。"
+    "title_zh": "丰隆投行将双威医疗评级下调至持有",
+    "summary_zh": "丰隆投行将双威医疗评级从买入下调至持有，同时维持2.05令吉的目标价不变。"
   },
   {
     "title": "Singapore group will develop 'most promising' Ebola vaccine",
@@ -237,17 +237,17 @@
     "_query": "Singapore General Hospital",
     "url_normalized": "https://manilatimes.net/2026/07/30/world/singapore-group-will-develop-most-promising-ebola-vaccine/2394784",
     "is_aggregator": false,
-    "published_at": "2026-07-30T09:55:46.153350+00:00",
+    "published_at": "2026-07-30T12:26:18.069499+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "ebola",
-    "_model_reason": "新加坡机构宣布研发埃博拉疫苗，属生物医药技术创新",
+    "_model_reason": "新加坡机构宣布研发埃博拉疫苗，属生物医药技术创新。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "技术/创新",
-      "reason": "新加坡机构宣布研发埃博拉疫苗，属生物医药技术创新"
+      "reason": "新加坡机构宣布研发埃博拉疫苗，属生物医药技术创新。"
     },
     "_model_event_type": "技术/创新",
     "event_type": "技术/创新",
@@ -255,8 +255,8 @@
     "_event_type_model": "技术/创新",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "新加坡机构将研发“最有希望”的埃博拉疫苗",
-    "summary_zh": "新加坡一机构周四宣布将研发一种被称为“最有希望”的埃博拉疫苗，以对抗致命性疫情。"
+    "title_zh": "新加坡机构将开发“最有希望”的埃博拉疫苗",
+    "summary_zh": "新加坡一家机构周四宣布将开发一种被称为“最有希望”的埃博拉疫苗，以抗击致命疫情。"
   },
   {
     "title": "This dentist built a S$500M dental empire from one clinic. Now, Q&M is betting S$146M on Asia.",
@@ -270,17 +270,17 @@
     "_query": "Raffles Medical Singapore",
     "url_normalized": "https://vulcanpost.com/912443/qm-500m-dental-empire",
     "is_aggregator": false,
-    "published_at": "2026-07-30T08:55:46.153350+00:00",
+    "published_at": "2026-07-30T11:26:18.069499+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "clinic",
-    "_model_reason": "牙科集团获资1.46亿新元布局亚洲市场",
+    "_model_reason": "Q&M牙科集团投资拓展亚洲市场，属企业扩张动态",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "扩张/新设",
-      "reason": "牙科集团获资1.46亿新元布局亚洲市场"
+      "reason": "Q&M牙科集团投资拓展亚洲市场，属企业扩张动态"
     },
     "_model_event_type": "扩张/新设",
     "event_type": "扩张/新设",
@@ -288,8 +288,8 @@
     "_event_type_model": "扩张/新设",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "该牙医从一家诊所打造出5亿新元牙科帝国。如今Q&M正押注1.46亿新元进军亚洲。",
-    "summary_zh": "Q&M牙科集团在深耕新加坡社区市场近三十年后，正重金扩张以跻身区域牙科巨头。"
+    "title_zh": "该牙医凭单店打造5亿新元牙科帝国。如今Q&M正押注1.46亿新元布局亚洲。",
+    "summary_zh": "深耕新加坡近三十年的Q&M牙科集团正加大投资布局亚洲。此举旨在将其打造为区域牙科巨头。"
   },
   {
     "title": "Should Government Hospitals And Ambulance Services Be Used For Private Events? — Dr Sarah Shaikh Abdul Karim",
@@ -303,17 +303,17 @@
     "_query": "Pantai Hospital Malaysia",
     "url_normalized": "https://codeblue.galencentre.org/2026/07/should-government-hospitals-and-ambulance-services-be-used-for-private-events-dr-sarah-shaikh-abdul-karim",
     "is_aggregator": false,
-    "published_at": "2026-07-30T07:55:46.153350+00:00",
+    "published_at": "2026-07-30T10:26:18.069499+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "hospital",
-    "_model_reason": "讨论公立医院资源滥用及公共卫生管理问题",
+    "_model_reason": "探讨公立医院急诊拥堵及公共资源使用等公共健康问题",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "公共卫生",
-      "reason": "讨论公立医院资源滥用及公共卫生管理问题"
+      "reason": "探讨公立医院急诊拥堵及公共资源使用等公共健康问题"
     },
     "_model_event_type": "公共卫生",
     "event_type": "公共卫生",
@@ -321,8 +321,8 @@
     "_event_type_model": "公共卫生",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "政府医院及救护车服务能否用于私人活动？——萨拉·沙伊赫·阿卜杜勒·卡里姆医生",
-    "summary_zh": "马来西亚急诊科长期拥挤，医护人员面临严重倦怠。公共专科医生与医务官员正被用于私人活动，加剧医疗系统压力。"
+    "title_zh": "政府医院与救护车服务是否应用于私人活动？——萨拉·沙伊赫·阿卜杜勒·卡里姆医生",
+    "summary_zh": "马来西亚急诊科长期拥挤，医护人员面临严重倦怠。本文质疑公共专科医生及医务官员被用于私人活动的做法。"
   },
   {
     "title": "How does Hong Kong’s new end-of-life law affect patients and medical staff?",
@@ -336,17 +336,17 @@
     "_query": "Bumrungrad Hospital",
     "url_normalized": "https://bangkokpost.com/life/social-and-lifestyle/3294000/how-does-hong-kongs-new-endoflife-law-affect-patients-and-medical-staff",
     "is_aggregator": false,
-    "published_at": "2026-07-30T07:55:46.153350+00:00",
+    "published_at": "2026-07-30T10:26:18.069499+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "patient",
-    "_model_reason": "香港拒绝维生治疗法案生效，属医疗行业政策法规。",
+    "_model_reason": "报道香港临终医疗新规生效，属行业监管政策动态。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "政策法规",
-      "reason": "香港拒绝维生治疗法案生效，属医疗行业政策法规。"
+      "reason": "报道香港临终医疗新规生效，属行业监管政策动态。"
     },
     "_model_event_type": "政策法规",
     "event_type": "政策法规",
@@ -354,8 +354,8 @@
     "_event_type_model": "政策法规",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "香港新临终法如何影响患者与医护人员？",
-    "summary_zh": "香港新临终法将于周五生效，允许末期病人拒绝维生治疗。该法案的实施将直接影响患者的医疗自主权与医护人员的临床决策。"
+    "title_zh": "香港新临终法律如何影响患者与医护人员？",
+    "summary_zh": "香港新法允许终末期患者拒绝维持生命治疗，该法案将于本周五正式生效。"
   },
   {
     "title": "Early screening and prevention key to reducing India's cancer burden: Experts",
@@ -1534,71 +1534,5 @@
     "board": "行业动态",
     "title_zh": "武田制药QDENGA成为印度首个获批登革热疫苗",
     "summary_zh": "印度中央药品标准控制组织（CDSCO）批准武田制药QDENGA疫苗，系印度首个获批登革热疫苗，显著提升该国公共卫生应对能力。"
-  },
-  {
-    "title": "Bangladesh achieves first ventilator-assisted brainstem glioma radiotherapy success",
-    "url": "https://www.tbsnews.net/bangladesh/health/bangladesh-achieves-first-ventilator-assisted-brainstem-glioma-radiotherapy",
-    "snippet": "Evercare Hospital Chattogram has achieved Bangladesh's first successful treatment of a patient with malignant brainstem glioma using radiotherapy while the...",
-    "date": "24 hours ago",
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZvbHhxO38LPWzq4jlc67Aj1x9KxkEAslkyho5_tyuah8fyEhxrUEGrsw&usqp=CAI&s",
-    "position": 3,
-    "_kind": "entity",
-    "_query_owner": "Mount Elizabeth Hospital",
-    "_query": "Mount Elizabeth Hospital Singapore",
-    "url_normalized": "https://tbsnews.net/bangladesh/health/bangladesh-achieves-first-ventilator-assisted-brainstem-glioma-radiotherapy",
-    "is_aggregator": false,
-    "published_at": "2026-07-24T05:50:48.564282+00:00",
-    "matched_entity": null,
-    "matched_alias": null,
-    "_core_keyword": "hospital",
-    "_model_reason": "首例呼吸机辅助脑干胶质瘤放疗",
-    "_model_verdict": {
-      "is_news": true,
-      "is_subject": true,
-      "is_industry": true,
-      "event_type": "技术/创新",
-      "reason": "首例呼吸机辅助脑干胶质瘤放疗"
-    },
-    "_model_event_type": "技术/创新",
-    "event_type": "技术/创新",
-    "_event_type_rule": "行业新闻",
-    "_event_type_model": "技术/创新",
-    "_event_type_source": "model",
-    "board": "行业动态",
-    "title_zh": "伊丽莎白医院吉大港分院完成孟加拉国首例呼吸机辅助脑干胶质瘤放射治疗",
-    "summary_zh": "伊丽莎白医院吉大港分院成功实施孟加拉国首例呼吸机辅助下的恶性脑干胶质瘤放射治疗，标志该国神经肿瘤精准放疗取得突破。"
-  },
-  {
-    "title": "Chief Secretary orders immediate action to address service issues at Universiti Malaya Medical Centre",
-    "url": "https://www.sinardaily.my/article/738799/focus/national/chief-secretary-orders-immediate-action-to-address-service-issues-at-universiti-malaya-medical-centre",
-    "snippet": "Shamsul Azri said safeguarding public health remains a top priority of the Madani government and had called for a meeting this morning to discuss the...",
-    "date": "24 hours ago",
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRfs-1bvy03klzZgTuaOpInHh74nPi6z0GC_wnoKwR4E7xasEE-8cRAqY&usqp=CAI&s",
-    "position": 5,
-    "_kind": "entity",
-    "_query_owner": "Sunway Medical Centre",
-    "_query": "Sunway Medical Centre Malaysia",
-    "url_normalized": "https://sinardaily.my/article/738799/focus/national/chief-secretary-orders-immediate-action-to-address-service-issues-at-universiti-malaya-medical-centre",
-    "is_aggregator": false,
-    "published_at": "2026-07-24T05:50:48.564282+00:00",
-    "matched_entity": null,
-    "matched_alias": null,
-    "_core_keyword": "medical centre",
-    "_model_reason": "政府高官介入医管中心整改",
-    "_model_verdict": {
-      "is_news": true,
-      "is_subject": true,
-      "is_industry": true,
-      "event_type": "政策法规",
-      "reason": "政府高官介入医管中心整改"
-    },
-    "_model_event_type": "政策法规",
-    "event_type": "政策法规",
-    "_event_type_rule": "政策法规",
-    "_event_type_model": "政策法规",
-    "_event_type_source": "model",
-    "board": "行业动态",
-    "title_zh": "马来西亚首席秘书下令立即解决马来亚大学医学中心服务问题",
-    "summary_zh": "首席秘书沙姆苏尔·阿兹里下令立即采取行动解决马来亚大学医学中心的服务问题，强调保障公众健康是玛达尼政府的首要任务。"
   }
 ]
