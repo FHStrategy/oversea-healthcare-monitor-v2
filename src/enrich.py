@@ -71,7 +71,7 @@ def _one(item: Dict[str, Any], model: str, timeout: int) -> Dict[str, str]:
 
 
 def run(items: List[Dict[str, Any]], model: str = "qwen3.7-plus",
-        max_workers: int = 8, timeout: int = 30
+        max_workers: int = 8, timeout: int = 60
         ) -> Tuple[List[Dict[str, Any]], List[Tuple[str, str]]]:
     """
     原地写入 title_zh / summary_zh。
