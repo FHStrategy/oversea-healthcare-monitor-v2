@@ -173,7 +173,7 @@ def _judge_one(item: Dict[str, Any], cfg: Dict[str, Any],
         types="\n".join(f"  {i}. {n}" for i, n in enumerate(type_names, 1)),
     )
     return chat_json(prompt, system=_SYS,
-                     model=cfg.get("model", "qwen3.7-flash-2026-07-15"),
+                     model=cfg.get("model", "qwen3.7-plus"),
                      timeout=cfg.get("timeout", 30))
 
 
