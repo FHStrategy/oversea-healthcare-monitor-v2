@@ -367,7 +367,7 @@ model_filter:
   enabled: true
   model: qwen3.7-plus
   max_workers: 8
-  timeout: 30
+  timeout: 60
   criteria:
     - "这条是不是一则真实的新闻报道？（不是广告、SEO列表页、导航页、股票行情页）"
     - "目标机构是不是这条新闻的【主体】？（只是提到名字、或仅作为事件发生地点 → 否）"
