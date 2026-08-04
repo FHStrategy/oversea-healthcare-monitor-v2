@@ -11,17 +11,17 @@
     "_query": "Apollo Hospitals India",
     "url_normalized": "https://medicalbuyer.co.in/uzbekistan-apollo-hospitals-to-strengthen-healthcare-cooperation",
     "is_aggregator": false,
-    "published_at": "2026-08-03T05:45:58.537358+00:00",
+    "published_at": "2026-08-04T05:17:19.372758+00:00",
     "matched_entity": "Apollo Hospitals",
     "matched_alias": "apollo hospital",
     "_core_keyword": "hospital",
-    "_model_reason": "Apollo Hospitals与乌兹别克斯坦加强医疗合作",
+    "_model_reason": "阿波罗医院与乌方加强医疗合作，属战略合作动态。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "合作/合资",
-      "reason": "Apollo Hospitals与乌兹别克斯坦加强医疗合作"
+      "reason": "阿波罗医院与乌方加强医疗合作，属战略合作动态。"
     },
     "_model_event_type": "合作/合资",
     "event_type": "合作/合资",
@@ -29,7 +29,7 @@
     "_event_type_model": "合作/合资",
     "_event_type_source": "model",
     "title_zh": "乌兹别克斯坦与阿波罗医院加强医疗合作",
-    "summary_zh": "乌兹别克斯坦医药行业发展局局长阿齐佐夫与印度阿波罗医院代表举行会议，旨在加强双方医疗合作。"
+    "summary_zh": "乌兹别克斯坦医药行业发展局局长与印度阿波罗医院代表举行会议，双方将进一步加强医疗领域的合作。"
   },
   {
     "title": "Odisha trains 779 hospitals for seamless implementation of AB-PMJAY, GJAY",
@@ -43,7 +43,7 @@
     "_query": "Apollo Hospitals India",
     "url_normalized": "https://medicalbuyer.co.in/odisha-trains-779-hospitals-for-seamless-implementation-of-ab-pmjay-gjay",
     "is_aggregator": false,
-    "published_at": "2026-08-03T05:45:58.537358+00:00",
+    "published_at": "2026-08-04T05:17:19.372758+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "hospital",
@@ -61,8 +61,8 @@
     "_event_type_model": "政策法规",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "奥迪沙邦培训779家医院以无缝实施AB-PMJAY与GJAY",
-    "summary_zh": "奥迪沙邦政府对30个区的779家私立医院进行了培训，以确保阿尤什曼·巴拉特总理健康保险计划等项目的无缝实施。"
+    "title_zh": "奥里萨邦培训779家医院以无缝实施AB-PMJAY与GJAY",
+    "summary_zh": "奥里萨邦政府对30个区的779家私立医院开展培训，以确保无缝实施AB-PMJAY。"
   },
   {
     "title": "TPG, Permira Lead Race For Rs 11,000 Cr Cloudnine Stake Sale",
@@ -76,17 +76,17 @@
     "_query": "Apollo Hospitals India",
     "url_normalized": "https://bwhealthcareworld.com/article/tpg-permira-lead-race-for-rs-11-000-cr-cloudnine-stake-sale-617619",
     "is_aggregator": false,
-    "published_at": "2026-08-03T05:36:58.537358+00:00",
+    "published_at": "2026-08-04T05:08:19.372758+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "healthcare",
-    "_model_reason": "印度医疗集团股权出售竞购，属资本运作。",
+    "_model_reason": "PE竞购印度医疗集团股权，属资本运作。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "资本运作",
-      "reason": "印度医疗集团股权出售竞购，属资本运作。"
+      "reason": "PE竞购印度医疗集团股权，属资本运作。"
     },
     "_model_event_type": "资本运作",
     "event_type": "资本运作",
@@ -94,8 +94,8 @@
     "_event_type_model": "资本运作",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "TPG与Permira领跑Cloudnine 1100亿卢比股权出售",
-    "summary_zh": "TPG Capital和Permira领跑Cloudnine 1100亿卢比股权出售，表明投资者对印度专科医疗领域兴趣浓厚。"
+    "title_zh": "TPG与Permira领跑Cloudnine 1100亿卢比股权出售竞购",
+    "summary_zh": "TPG Capital与Permira成为Cloudnine 1100亿卢比股权出售的热门竞购方，表明投资者对印度专科医疗领域抱有强烈兴趣。"
   },
   {
     "title": "Manipal IPO reveals India's new hospital economics; occupied bed matters more than patients",
@@ -109,17 +109,17 @@
     "_query": "Aster DM Healthcare",
     "url_normalized": "https://thesouthfirst.com/health/manipal-ipo-reveals-indias-new-hospital-economics-occupied-bed-matters-more-than-patients",
     "is_aggregator": false,
-    "published_at": "2026-08-03T04:36:58.537358+00:00",
+    "published_at": "2026-08-04T04:08:19.372758+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "hospital",
-    "_model_reason": "报道印度Manipal医院IPO，属资本运作。",
+    "_model_reason": "报道Manipal医院集团IPO，属资本运作。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "资本运作",
-      "reason": "报道印度Manipal医院IPO，属资本运作。"
+      "reason": "报道Manipal医院集团IPO，属资本运作。"
     },
     "_model_event_type": "资本运作",
     "event_type": "资本运作",
@@ -127,8 +127,8 @@
     "_event_type_model": "资本运作",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "马尼帕尔IPO揭示印度医院新经济：床位占用比患者数量更重要",
-    "summary_zh": "马尼帕尔健康即将进行IPO，其招股书分析揭示了印度私立医院的运营与经济模式，展现了印度医院的新经济形态。"
+    "title_zh": "马尼帕尔IPO揭示印度医院新经济；床位占用比患者数量更重要",
+    "summary_zh": "马尼帕尔医疗即将进行IPO，其招股书揭示了印度私立医院的新经济模式。这超越了单纯的企业融资故事，展现了行业运营现状。"
   },
   {
     "title": "Fortis Hospital Bannerghatta Road Achieves India’s Fastest Milestone of 3000 Da Vinci Xi Robotic Surgeries",
@@ -142,17 +142,17 @@
     "_query": "IHH Healthcare",
     "url_normalized": "https://passionateinmarketing.com/fortis-hospital-bannerghatta-road-achieves-indias-fastest-milestone-of-3000-da-vinci-xi-robotic-surgeries",
     "is_aggregator": false,
-    "published_at": "2026-08-03T04:36:58.537358+00:00",
+    "published_at": "2026-08-04T04:08:19.372758+00:00",
     "matched_entity": "Fortis Healthcare",
     "matched_alias": "fortis hospital",
     "_core_keyword": "hospital",
-    "_model_reason": "Fortis达成3000例机器人手术里程碑，属技术创新",
+    "_model_reason": "Fortis医院达成3000例机器人手术技术里程碑",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "技术/创新",
-      "reason": "Fortis达成3000例机器人手术里程碑，属技术创新"
+      "reason": "Fortis医院达成3000例机器人手术技术里程碑"
     },
     "_model_event_type": "技术/创新",
     "event_type": "技术/创新",
@@ -160,7 +160,7 @@
     "_event_type_model": "技术/创新",
     "_event_type_source": "model",
     "title_zh": "富通医院班纳加塔路院区达成印度最快3000例达芬奇Xi机器人手术里程碑",
-    "summary_zh": "富通医院班纳加塔路院区完成3000例达芬奇Xi机器人手术。此举标志着印度机器人辅助手术发展取得里程碑式成就。"
+    "summary_zh": "富通医院班纳加塔路院区在印度机器人辅助手术发展中取得里程碑式成就，标志着该领域演进的重要节点。"
   },
   {
     "title": "Raffles Medical commits $5m to healthcare and education initiatives",
@@ -174,25 +174,25 @@
     "_query": "Raffles Medical Singapore",
     "url_normalized": "https://healthcareasiamagazine.com/news/raffles-medical-commits-5m-healthcare-and-education-initiatives",
     "is_aggregator": false,
-    "published_at": "2026-08-03T02:36:58.537358+00:00",
+    "published_at": "2026-08-04T02:08:19.372758+00:00",
     "matched_entity": "Raffles Medical Group",
     "matched_alias": "raffles medical",
     "_core_keyword": "healthcare",
-    "_model_reason": "莱佛士医疗出资启动医疗教育合作伙伴关系",
+    "_model_reason": "莱佛士医疗集团出资五百万启动医疗合作项目",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "合作/合资",
-      "reason": "莱佛士医疗出资启动医疗教育合作伙伴关系"
+      "reason": "莱佛士医疗集团出资五百万启动医疗合作项目"
     },
     "_model_event_type": "合作/合资",
     "event_type": "合作/合资",
     "_event_type_rule": "合作/合资",
     "_event_type_model": "合作/合资",
     "_event_type_source": "model",
-    "title_zh": "莱佛士医疗承诺投入500万美元用于医疗和教育项目",
-    "summary_zh": "莱佛士医疗集团承诺投入500万美元启动为期两年的合作，为弱势儿童和青少年提供专业护理。"
+    "title_zh": "莱佛士医疗承诺投入500万用于医疗和教育项目",
+    "summary_zh": "莱佛士医疗集团启动为期两年的合作并承诺投入500万。此举旨在为弱势儿童和青少年提供专业护理。"
   },
   {
     "title": "Bago begins overhaul of 100-year-old General Hospital Minna",
@@ -206,17 +206,17 @@
     "_query": "Singapore General Hospital",
     "url_normalized": "https://thenationonlineng.net/bago-begins-overhaul-of-100-year-old-general-hospital-minna",
     "is_aggregator": false,
-    "published_at": "2026-08-02T15:36:58.537358+00:00",
+    "published_at": "2026-08-03T15:08:19.372758+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "hospital",
-    "_model_reason": "州政府启动百年综合医院翻修重建工程。",
+    "_model_reason": "尼日尔州州长启动百年综合医院重建项目。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "扩张/新设",
-      "reason": "州政府启动百年综合医院翻修重建工程。"
+      "reason": "尼日尔州州长启动百年综合医院重建项目。"
     },
     "_model_event_type": "扩张/新设",
     "event_type": "扩张/新设",
@@ -224,8 +224,41 @@
     "_event_type_model": "扩张/新设",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "巴戈开始改造百年明纳综合医院",
-    "summary_zh": "尼日尔州州长巴戈已启动百年明纳综合医院的分阶段重建工作，并启用了六个设施。"
+    "title_zh": "巴戈开始翻修百年历史的明纳综合医院",
+    "summary_zh": "尼日尔州州长巴戈启动了百年历史的明纳综合医院分阶段重建工作，并率先启用六个相关设施。此举标志着该百年医院翻修工程的正式展开。"
+  },
+  {
+    "title": "Launching of the Measles-Rubella Supplemental Immunization Activity – City Health Services Office",
+    "url": "https://caro.doh.gov.ph/launching-of-the-measles-rubella-supplemental-immunization-activity-city-health-services-office/",
+    "snippet": "Launching of the Measles-Rubella Supplemental Immunization Activity – City Health Services Office – August 3, 2026. transparency seal logo.",
+    "date": "17 hours ago",
+    "imageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADQklEQVQ4jW2TS0hjdxTGv/tK4k1iTDaJGotEKrgwDGggFDrUKjIbEYXgyoK7Lly4GLsSbBbRhZsysxC0onaGot34aAyli9l0VkZEQRIfJFScJDe5uTEvvDfe5P/vZjJ1aA8cOIvz+/j4OIehlDJ4UoFAwDI8PGxKJBIYGxv73mQyiZFI5KeOjg4cHBxoR0dH5af7oJQyzZ6YmDCfnZ29lmU5lcvlUqFQSA8Gg7osy5l8Pp+KxWJvZmdnbU+ZTwKrq6v98Xj8ja7rKqWUEkJoNBqlx8fHtNFoUEop1XVdTyaTv29vb3/d5NimE6vV6rJarS8ikYipXC5D0zSIoghCCDRNQ7VaxeHhIS8IwjcWi8XV5PjmsLm5+d7lcp3t7u6O9PT0IB6PI5vNQlEUXF5ewu/3Y39/H6IoXu/t7b2bnJz8bwaxWGxPURSqKApdX1+nLpeL2u12ury8TLPZLL2/v6dXV1d/DQwMWJsM/zTQdDpNKKWglEKWZVSrVdRqNRSLRWQyGfA8j0KhwD5lPhNoNBrgOA6EENjtdszNzaFYLKKtrQ0tLS0ghIDneXAc9/8CHMeB53nU63WMjo5CkiTk83l4vV48Pj6CYRhQSsEw/57OZ3YURcHOzg5ubm6wsbEBURTh8XgQi8WwuLiIVCoFQRBYo9H4ieMBYH5+flCW5fzU1BS5vr7G1tYWRkZGYDAYAAC3t7eQZRmqqsJisdSNRmPr0tLSV4qi/MmcnJx8yXHcb6VS6fLi4uLvUqn0MhwO8zMzM/D5fGAYBizLYm1tDYFAgBQKhZ8dDkfd6XR++/Dw8ANrMBhyuVzubVdXl1uSpF+9Xu8voVDow+DgYNlkMpGPoVWnp6fT9Xp9//T09JXNZmuVJOkPs9l8wvf395fPz88/5PP5jvb2dn8ymXwlCMJbhmFa3W73c7PZ3JZIJMK6rpc1TSt0dnY+U1X1GSFkp7e3V2IopczQ0JA4Pj7+o9vt/q5Wqz16PB4tnU5LhJB3qqpWbTbbC6fT+UUmkxErlYohnU4fKorycmVlpcg033lhYYGNRqOuSqXi6O7udvT19Xl9Pt/zUqlkYln2fTgcPr67u8sJglD0+/25YDBYB4B/AMIHzoY0dXd9AAAAAElFTkSuQmCC",
+    "position": 1,
+    "_kind": "sea",
+    "_query_owner": "菲律宾",
+    "_query": "site:doh.gov.ph healthcare policy",
+    "url_normalized": "https://caro.doh.gov.ph/launching-of-the-measles-rubella-supplemental-immunization-activity-city-health-services-office",
+    "is_aggregator": false,
+    "published_at": "2026-08-03T13:08:19.372758+00:00",
+    "matched_entity": null,
+    "matched_alias": null,
+    "_core_keyword": "health service",
+    "_model_reason": "菲律宾卫生部门开展麻疹风疹免疫活动",
+    "_model_verdict": {
+      "is_news": true,
+      "is_subject": true,
+      "is_industry": true,
+      "event_type": "公共卫生",
+      "reason": "菲律宾卫生部门开展麻疹风疹免疫活动"
+    },
+    "_model_event_type": "公共卫生",
+    "event_type": "公共卫生",
+    "_event_type_rule": "行业新闻",
+    "_event_type_model": "公共卫生",
+    "_event_type_source": "model",
+    "board": "行业动态",
+    "title_zh": "市卫生服务办公室启动麻疹-风疹补充免疫活动",
+    "summary_zh": "市卫生服务办公室于2026年8月3日启动麻疹-风疹补充免疫活动。"
   },
   {
     "title": "EPF Disposes RM63 Million Worth Of IHH Shares",
@@ -239,25 +272,25 @@
     "_query": "IHH Healthcare",
     "url_normalized": "https://businesstoday.com.my/2026/08/02/epf-disposes-rm63-million-worth-of-ihh-shares",
     "is_aggregator": false,
-    "published_at": "2026-08-02T10:36:58.537358+00:00",
+    "published_at": "2026-08-03T10:08:19.372758+00:00",
     "matched_entity": "IHH Healthcare",
     "matched_alias": "ihh healthcare",
     "_core_keyword": "healthcare",
-    "_model_reason": "报道EPF减持IHH股份，属医疗集团资本运作。",
+    "_model_reason": "EPF减持IHH医疗股份，属医疗集团资本运作",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "资本运作",
-      "reason": "报道EPF减持IHH股份，属医疗集团资本运作。"
+      "reason": "EPF减持IHH医疗股份，属医疗集团资本运作"
     },
     "_model_event_type": "资本运作",
     "event_type": "资本运作",
     "_event_type_rule": "资本运作",
     "_event_type_model": "资本运作",
     "_event_type_source": "model",
-    "title_zh": "雇员公积金局出售价值6300万令吉的IHH医疗股份",
-    "summary_zh": "马来西亚雇员公积金局净出售1526万股IHH医疗股份，削减了其在IHH医疗的持股比例。"
+    "title_zh": "雇员公积金局出售价值6300万令吉的IHH医疗保健股份",
+    "summary_zh": "马来西亚雇员公积金局净出售1526万股IHH医疗保健集团股份，从而减持了其在IHH医疗保健集团的持股。"
   },
   {
     "title": "GLP-1 demand stirs up hunger for obesity care talent",
@@ -271,17 +304,17 @@
     "_query": "Fortis Healthcare India",
     "url_normalized": "https://indiaipo.in/news/detail/glp-1-demand-stirs-up-hunger-for-obesity-care-talent",
     "is_aggregator": false,
-    "published_at": "2026-08-02T07:36:58.537358+00:00",
+    "published_at": "2026-08-03T07:08:19.372758+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "hospital",
-    "_model_reason": "印度医疗机构因减肥药需求增加招聘，属行业新闻。",
+    "_model_reason": "印度医疗机构因GLP-1需求增加而招聘营养人才",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "行业新闻",
-      "reason": "印度医疗机构因减肥药需求增加招聘，属行业新闻。"
+      "reason": "印度医疗机构因GLP-1需求增加而招聘营养人才"
     },
     "_model_event_type": "行业新闻",
     "event_type": "行业新闻",
@@ -289,8 +322,41 @@
     "_event_type_model": "行业新闻",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "GLP-1需求激增引发对肥胖管理人才的渴求",
-    "summary_zh": "印度对营养专业人员的需求正迅速上升。为此，当地医院和数字健康平台正在招聘更多的营养师与教育工作者。"
+    "title_zh": "GLP-1需求激增引发对肥胖护理人才的渴求",
+    "summary_zh": "印度各地对营养专业人员的需求正迅速上升。医院和数字健康平台正招聘更多营养师与教育工作者。"
+  },
+  {
+    "title": "REMARKS BY MR ONG YE KUNG, MINISTER FOR HEALTH AND COORDINATING MINISTER FOR SOCIAL POLICIES, AT THE OPENING OF WOODLANDS HOSPICE, 3 AUGUST 2026",
+    "url": "https://www.moh.gov.sg/newsroom/remarks-by-mr-ong-ye-kung--minister-for-health-and-coordinating-minister-for-social-policies--at-the-opening-of-woodlnads-hospice--3-august-2026-/",
+    "snippet": "Thank you. Let me first clarify – our target is to train 10,000 nurses and healthcare workers. So NUHS already pledged 3,000, and today Woodlands Hospital...",
+    "date": "23 hours ago",
+    "imageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAn1BMVEVHcEyqxEgAYwDN4L/R4ajT59HP4aLF243S47TD16CnxVbG1sDQ54SzyKqc0QDE2KOd0ADQ6IaqwLCxxqja6rbL6u+0zdnnLSS44+0AP3SuwczI2eFlg5y+6PHS8vhCcZPvb2jP4t2ku8m81uBUepmCnKIAMGuAnLHnFwjnjYsjYYnyXFSXs8SqlaGjmam/5O7ygHnuIQwLUX2Qqr3lp6cYE+J1AAAAFXRSTlMAOQvRh9NnYZ6aVtNB2RSmFkXX3I1UYor9AAAAl0lEQVQYlU2PVxLCMBBDDQSc0EJb99hOL/Ry/7PBZGJi/enNaFdCqNfiMMfIU2xuaRKNfq+uz0bC5A+O/EFpy2bO70pzptQm6XQA2HQ9gOUATpy3tPmwezCAMDeFtQDv0AEGdaHzF3cgAAZKd7xwEawky2SVaXd0W3IQpB7fok2VCULGYmitLoLkXnUUEUGkN+43f+XmfwEGVgzJ1/yRRAAAAABJRU5ErkJggg==",
+    "position": 1,
+    "_kind": "sea",
+    "_query_owner": "新加坡",
+    "_query": "site:moh.gov.sg healthcare policy",
+    "url_normalized": "https://moh.gov.sg/newsroom/remarks-by-mr-ong-ye-kung--minister-for-health-and-coordinating-minister-for-social-policies--at-the-opening-of-woodlnads-hospice--3-august-2026-",
+    "is_aggregator": false,
+    "published_at": "2026-08-03T07:08:19.372758+00:00",
+    "matched_entity": null,
+    "matched_alias": null,
+    "_core_keyword": "hospital",
+    "_model_reason": "新加坡兀兰临终关怀医院正式开业",
+    "_model_verdict": {
+      "is_news": true,
+      "is_subject": true,
+      "is_industry": true,
+      "event_type": "扩张/新设",
+      "reason": "新加坡兀兰临终关怀医院正式开业"
+    },
+    "_model_event_type": "扩张/新设",
+    "event_type": "扩张/新设",
+    "_event_type_rule": "行业新闻",
+    "_event_type_model": "扩张/新设",
+    "_event_type_source": "model",
+    "board": "行业动态",
+    "title_zh": "卫生部长兼社会政策统筹部长王乙康在兀兰安宁病院开幕致辞，2026年8月3日",
+    "summary_zh": "新加坡卫生部明确培训1万名护士及医护人员的目标。国立大学医疗系统已承诺培训3000人，兀兰医院也作出相关承诺以扩充医疗人力。"
   },
   {
     "title": "Apollo CVHF Hospital Launches Gujarat’s First Dedicated Robotic Cardiac Surgery Unit & Second Da Vinci Xi Surgical System",
