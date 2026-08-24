@@ -1035,38 +1035,5 @@
     "board": "行业动态",
     "title_zh": "新加坡患者转向柔佛就医，海外医疗储蓄使用量翻倍",
     "summary_zh": "因价格和便利性，新加坡患者跨境就医需求激增。专家提醒患者需综合考量总体治疗成本。"
-  },
-  {
-    "title": "Missing sex education? Bengaluru doctors link STI rise among youngsters to awareness gap",
-    "url": "https://timesofindia.indiatimes.com/city/bengaluru/missing-sex-talk-doctors-link-sti-rise-among-youngsters-to-awareness-gap/articleshow/133265962.cms",
-    "snippet": "Bengaluru doctors report rising STIs among teens and young adults, urging comprehensive sex education, routine screening, HPV vaccination and stigma-free...",
-    "date": "18 hours ago",
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKnBVL61zbZI_bxAMZ1Svzl025-YUC1U1ZMtnI1w3oLmAQvt2m18g3ckg&usqp=CAI&s",
-    "position": 5,
-    "_kind": "entity",
-    "_query_owner": "Fortis Healthcare",
-    "_query": "Fortis Healthcare India",
-    "url_normalized": "https://timesofindia.indiatimes.com/city/bengaluru/missing-sex-talk-doctors-link-sti-rise-among-youngsters-to-awareness-gap/articleshow/133265962.cms",
-    "is_aggregator": false,
-    "published_at": "2026-08-16T10:04:01.148578+00:00",
-    "matched_entity": null,
-    "matched_alias": null,
-    "_core_keyword": "doctor",
-    "_model_reason": "医生报告STI上升并呼吁筛查，属公共卫生动态。",
-    "_model_verdict": {
-      "is_news": true,
-      "is_subject": true,
-      "is_industry": true,
-      "event_type": "公共卫生",
-      "reason": "医生报告STI上升并呼吁筛查，属公共卫生动态。"
-    },
-    "_model_event_type": "公共卫生",
-    "event_type": "公共卫生",
-    "_event_type_rule": "公共卫生",
-    "_event_type_model": "公共卫生",
-    "_event_type_source": "model",
-    "board": "行业动态",
-    "title_zh": "缺乏性教育？班加罗尔医生将年轻人性病增加归因于认知差距",
-    "summary_zh": "班加罗尔医生指出青少年及年轻人性病发病率上升。他们呼吁推行全面性教育、常规筛查与HPV疫苗接种，并消除病耻感以应对此趋势。"
   }
 ]
