@@ -10,26 +10,26 @@
     "_query": "site:healthcareglobal.com healthcare",
     "url_normalized": "https://healthcareglobal.com/news/study-eli-lillys-zepbound-linked-to-lower-healthcare-costs",
     "is_aggregator": false,
-    "published_at": "2026-08-28T10:24:29.297907+00:00",
+    "published_at": "2026-08-29T05:04:13.679379+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "healthcare",
-    "_model_reason": "礼来新药研究证实其可降低医疗成本。",
+    "_model_reason": "礼来药物降本研究，属医药行业产品与市场动态。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
-      "event_type": "技术/创新",
-      "reason": "礼来新药研究证实其可降低医疗成本。"
+      "event_type": "行业新闻",
+      "reason": "礼来药物降本研究，属医药行业产品与市场动态。"
     },
-    "_model_event_type": "技术/创新",
-    "event_type": "技术/创新",
+    "_model_event_type": "行业新闻",
+    "event_type": "行业新闻",
     "_event_type_rule": "行业新闻",
-    "_event_type_model": "技术/创新",
+    "_event_type_model": "行业新闻",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "研究：礼来Zepbound与较低医疗成本相关",
-    "summary_zh": "一项研究表明，礼来公司的药物Zepbound与较低的医疗成本相关。"
+    "title_zh": "研究：礼来Zepbound与降低医疗成本相关",
+    "summary_zh": "研究表明，礼来公司的Zepbound与降低医疗成本相关。"
   },
   {
     "title": "Hong Leong, RHB and UOB Kay Hian upgrade IHH to ‘buy’ after earnings beat estimates",
