@@ -2,7 +2,7 @@
   {
     "title": "Stock Today: IHH Healthcare Slips 1% As Fortis Takeover Overhang Persists",
     "url": "https://www.businesstoday.com.my/2026/09/03/stock-today-ihh-healthcare-slips-1-as-fortis-takeover-overhang-persists/",
-    "snippet": "Shares in IHH Healthcare Bhd slipped nearly 1% in afternoon trading today as uncertainty surrounding its mandatory takeover offer (MTO) for Fortis...",
+    "snippet": "# Stock Today: IHH Healthcare Slips 1% As Fortis Takeover Overhang Persists\nShares in IHH Healthcare Bhd slipped nearly 1% in afternoon trading today as uncertainty surrounding its mandatory takeover offer (MTO) for Fortis Healthcare continues to weigh on the stock.",
     "date": "51 minutes ago",
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZquOaL_kqgOiHOwT4wFUeZxEkgjlMmJbUBze2W5LOTzR4S-ffrV_JqqM&usqp=CAI&s",
     "position": 1,
@@ -11,25 +11,25 @@
     "_query": "IHH Healthcare",
     "url_normalized": "https://businesstoday.com.my/2026/09/03/stock-today-ihh-healthcare-slips-1-as-fortis-takeover-overhang-persists",
     "is_aggregator": false,
-    "published_at": "2026-09-03T07:15:24.405817+00:00",
-    "matched_entity": "IHH Healthcare",
-    "matched_alias": "ihh healthcare",
+    "published_at": "2026-09-04T07:09:36.305401+00:00",
+    "matched_entity": "Fortis Healthcare",
+    "matched_alias": "fortis healthcare",
     "_core_keyword": "healthcare",
-    "_model_reason": "IHH Healthcare收购Fortis属于资本运作",
+    "_model_reason": "报道IHH强制收购Fortis，属医疗资本运作。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "资本运作",
-      "reason": "IHH Healthcare收购Fortis属于资本运作"
+      "reason": "报道IHH强制收购Fortis，属医疗资本运作。"
     },
     "_model_event_type": "资本运作",
     "event_type": "资本运作",
     "_event_type_rule": "行业新闻",
     "_event_type_model": "资本运作",
     "_event_type_source": "model",
-    "title_zh": "今日股市：Fortis收购阴霾持续，IHH Healthcare股价下跌1%",
-    "summary_zh": "IHH Healthcare今日午后股价下跌近1%，原因是其针对Fortis的强制收购要约仍面临不确定性。"
+    "title_zh": "今日股市：IHH医疗保健跌1%，Fortis Healthcare收购阴霾持续",
+    "summary_zh": "因对Fortis Healthcare的强制收购要约存在不确定性，IHH医疗保健股价在今日下午交易中下跌近1%。"
   },
   {
     "title": "Apollo Hospital Accused of Billing Irregularities, Woman Questions Corporate Hospital Practices",
@@ -43,17 +43,17 @@
     "_query": "Apollo Hospitals India",
     "url_normalized": "https://munsifdaily.com/apollo-hospital-accused-of-billing-irregularities",
     "is_aggregator": false,
-    "published_at": "2026-09-03T07:06:24.405817+00:00",
+    "published_at": "2026-09-04T07:00:36.305401+00:00",
     "matched_entity": "Apollo Hospitals",
     "matched_alias": "apollo hospital",
     "_core_keyword": "hospital",
-    "_model_reason": "报道Apollo医院计费违规等经营合规动态。",
+    "_model_reason": "报道Apollo医院计费违规及经营合规问题",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "行业新闻",
-      "reason": "报道Apollo医院计费违规等经营合规动态。"
+      "reason": "报道Apollo医院计费违规及经营合规问题"
     },
     "_model_event_type": "行业新闻",
     "event_type": "行业新闻",
@@ -61,7 +61,7 @@
     "_event_type_model": "行业新闻",
     "_event_type_source": "model",
     "title_zh": "阿波罗医院被指控计费违规，女子质疑企业医院做法",
-    "summary_zh": "一名女子指控阿波罗医院计费违规，称初始估价约25万卢比且无视其医保。此事引发了对企业医院收费做法的质疑。"
+    "summary_zh": "一名女子指控阿波罗医院计费违规，称初始预估费用约25万卢比。此事引发了对企业医院做法的质疑。"
   },
   {
     "title": "Singapore AI heart scan tool heads for wider hospital testing",
@@ -75,17 +75,17 @@
     "_query": "Singapore General Hospital",
     "url_normalized": "https://healthcareasiamagazine.com/healthcare/exclusive/singapore-ai-heart-scan-tool-heads-wider-hospital-testing-0",
     "is_aggregator": false,
-    "published_at": "2026-09-03T06:06:24.405817+00:00",
+    "published_at": "2026-09-04T06:00:36.305401+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "hospital",
-    "_model_reason": "新加坡AI心脏扫描工具进入医院测试，属技术创新",
+    "_model_reason": "新加坡AI心脏扫描工具进入医院测试，属技术创新。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "技术/创新",
-      "reason": "新加坡AI心脏扫描工具进入医院测试，属技术创新"
+      "reason": "新加坡AI心脏扫描工具进入医院测试，属技术创新。"
     },
     "_model_event_type": "技术/创新",
     "event_type": "技术/创新",
@@ -94,7 +94,7 @@
     "_event_type_source": "model",
     "board": "行业动态",
     "title_zh": "新加坡AI心脏扫描工具将进入更广泛的医院测试",
-    "summary_zh": "研究人员在模型准确率超90%后寻求临床批准，新加坡正推动该AI心脏扫描工具进入更广泛的医院测试。"
+    "summary_zh": "研究人员在模型准确率超90%后寻求临床批准。新加坡正推动该AI心脏扫描工具进入更广泛的医院进行测试。"
   },
   {
     "title": "Permira to Acquire 25.71% Stake in Cloudnine Hospitals Parent at INR 11,000 Cr Valuation",
@@ -108,17 +108,17 @@
     "_query": "Apollo Hospitals India",
     "url_normalized": "https://digitalhealthnews.com/permira-to-acquire-25-71-stake-in-cloudnine-hospitals-parent-at-inr-11-000-cr-valuation",
     "is_aggregator": false,
-    "published_at": "2026-09-03T06:06:24.405817+00:00",
+    "published_at": "2026-09-04T06:00:36.305401+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "hospital",
-    "_model_reason": "投资机构收购医疗集团母公司股权，属资本运作",
+    "_model_reason": "Permira收购医院母公司股权，属资本运作",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "资本运作",
-      "reason": "投资机构收购医疗集团母公司股权，属资本运作"
+      "reason": "Permira收购医院母公司股权，属资本运作"
     },
     "_model_event_type": "资本运作",
     "event_type": "资本运作",
@@ -126,8 +126,8 @@
     "_event_type_model": "资本运作",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "Permira将以1100亿卢比估值收购Cloudnine医院母公司25.71%股权",
-    "summary_zh": "Permira拟以1100亿卢比估值收购Cloudnine医院母公司KCIL 25.71%的股权。该交易尚需获得监管部门批准。"
+    "title_zh": "Permira拟以1100亿卢比估值收购Cloudnine医院母公司25.71%股权",
+    "summary_zh": "Permira拟以1100亿卢比估值收购Cloudnine医院母公司KCIL 25.71%股权。该交易尚需监管批准。"
   },
   {
     "title": "In Indonesia, stroke care delays accumulate on the way to treatment, new report finds",
@@ -141,17 +141,17 @@
     "_query": "Bangkok Hospital Thailand",
     "url_normalized": "https://taiwannews.com.tw/en/news/6433176",
     "is_aggregator": false,
-    "published_at": "2026-09-03T05:06:24.405817+00:00",
+    "published_at": "2026-09-04T05:00:36.305401+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "treatment",
-    "_model_reason": "印尼专家呼吁改善中风护理体系，属公共卫生动态。",
+    "_model_reason": "报道印尼中风护理延迟及专家呼吁，属公共卫生动态。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "公共卫生",
-      "reason": "印尼专家呼吁改善中风护理体系，属公共卫生动态。"
+      "reason": "报道印尼中风护理延迟及专家呼吁，属公共卫生动态。"
     },
     "_model_event_type": "公共卫生",
     "event_type": "公共卫生",
@@ -159,8 +159,8 @@
     "_event_type_model": "公共卫生",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "新报告发现印尼中风救治延误不断累积",
-    "summary_zh": "印尼专家呼吁建立基于能力的转诊机制，加大对专业中风团队的投入并扩大保险覆盖面，以弥合救治差距。"
+    "title_zh": "新报告发现印尼卒中治疗延误在就医途中不断累积",
+    "summary_zh": "印尼专家呼吁建立基于能力的转诊机制，增加专业卒中团队投资并扩大保险覆盖，以弥合卒中救治延误的差距。"
   },
   {
     "title": "Thailand expands stroke networks to cut critical treatment delays",
@@ -174,26 +174,26 @@
     "_query": "Bangkok Hospital Thailand",
     "url_normalized": "https://nationthailand.com/health-wellness/40070596",
     "is_aggregator": false,
-    "published_at": "2026-09-03T04:06:24.405817+00:00",
+    "published_at": "2026-09-04T04:00:36.305401+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "patient",
-    "_model_reason": "泰国扩大中风救治网络，属于医疗服务体系扩张。",
+    "_model_reason": "泰国扩大中风救治网络，属公共卫生体系建设动态。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
-      "event_type": "扩张/新设",
-      "reason": "泰国扩大中风救治网络，属于医疗服务体系扩张。"
+      "event_type": "公共卫生",
+      "reason": "泰国扩大中风救治网络，属公共卫生体系建设动态。"
     },
-    "_model_event_type": "扩张/新设",
-    "event_type": "扩张/新设",
+    "_model_event_type": "公共卫生",
+    "event_type": "公共卫生",
     "_event_type_rule": "扩张/新设",
-    "_event_type_model": "扩张/新设",
+    "_event_type_model": "公共卫生",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "泰国扩大卒中网络以减少关键治疗延误",
-    "summary_zh": "中风是全球包括泰国在内的重大健康问题。泰国正扩大卒中网络，以解决患者难以快速获得适当医疗护理的问题，从而减少关键治疗延误。"
+    "title_zh": "泰国扩大卒中网络以缩短关键治疗延误",
+    "summary_zh": "卒中是全球及泰国的主要健康问题，患者快速就医仍面临挑战。泰国通过扩大卒中网络来应对该问题，以缩短关键治疗延误。"
   },
   {
     "title": "KKR prioritises patient outcomes over beds with India’s Medicover Hospitals",
@@ -207,17 +207,17 @@
     "_query": "Apollo Hospitals India",
     "url_normalized": "https://ionanalytics.com/insights/mergermarket/kkr-prioritises-patient-outcomes-over-beds-with-indias-medicover-hospitals",
     "is_aggregator": false,
-    "published_at": "2026-09-03T03:06:24.405817+00:00",
+    "published_at": "2026-09-04T03:00:36.305401+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "hospital",
-    "_model_reason": "KKR投资印度Medicover医院，属医疗资本运作动态。",
+    "_model_reason": "KKR投资印度医院集团的战略动态。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "资本运作",
-      "reason": "KKR投资印度Medicover医院，属医疗资本运作动态。"
+      "reason": "KKR投资印度医院集团的战略动态。"
     },
     "_model_event_type": "资本运作",
     "event_type": "资本运作",
@@ -225,8 +225,8 @@
     "_event_type_model": "资本运作",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "KKR在印度Medicover医院项目中将患者疗效置于床位数量之上",
-    "summary_zh": "印度Medicover医院是印度最大的多专科连锁医院之一，其业务似乎注定将发挥巨大作用。"
+    "title_zh": "KKR在印度Medicover医院优先关注患者治疗结果而非床位数量",
+    "summary_zh": "印度Medicover医院作为国内最大的多专科连锁医院之一，其业务注定将发挥巨大作用。"
   },
   {
     "title": "Aster DM promoter buys $40M stake from TPG's Centella",
@@ -240,17 +240,17 @@
     "_query": "Aster DM Healthcare",
     "url_normalized": "https://app.dealroom.co/news/note/aster-dm-promoter-buys-40m-stake-from-tpg-s-centella",
     "is_aggregator": false,
-    "published_at": "2026-09-03T03:06:24.405817+00:00",
+    "published_at": "2026-09-04T03:00:36.305401+00:00",
     "matched_entity": "Aster DM Healthcare",
     "matched_alias": "aster dm",
     "_core_keyword": "healthcare",
-    "_model_reason": "Aster DM发生股权收购，属于医疗行业资本运作。",
+    "_model_reason": "报道Aster DM股权收购，属医疗资本运作。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "资本运作",
-      "reason": "Aster DM发生股权收购，属于医疗行业资本运作。"
+      "reason": "报道Aster DM股权收购，属医疗资本运作。"
     },
     "_model_event_type": "资本运作",
     "event_type": "资本运作",
@@ -258,7 +258,7 @@
     "_event_type_model": "资本运作",
     "_event_type_source": "model",
     "title_zh": "Aster DM发起人从TPG旗下Centella收购4000万美元股份",
-    "summary_zh": "发起人联盟（毛里求斯）控股有限公司收购了医疗服务提供商Aster DM Quality Care价值超35亿卢比的股份。"
+    "summary_zh": "Promoter Union (Mauritius) Holdings斥资超35亿卢比收购了医疗服务提供商Aster DM Quality Care的股份。"
   },
   {
     "title": "Work list prioritization tool cuts reporting and turnaround times by over 70%",
@@ -272,17 +272,17 @@
     "_query": "Singapore General Hospital",
     "url_normalized": "https://radiologybusiness.com/topics/artificial-intelligence/work-list-prioritization-tool-cuts-reporting-and-turnaround-times-over-70",
     "is_aggregator": false,
-    "published_at": "2026-09-02T23:06:24.405817+00:00",
+    "published_at": "2026-09-03T23:00:36.305401+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "hospital",
-    "_model_reason": "报道AI分诊工具在医院应用提升效率，属技术创新。",
+    "_model_reason": "报道AI分诊工具提升医院效率，属医疗技术创新",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "技术/创新",
-      "reason": "报道AI分诊工具在医院应用提升效率，属技术创新。"
+      "reason": "报道AI分诊工具提升医院效率，属医疗技术创新"
     },
     "_model_event_type": "技术/创新",
     "event_type": "技术/创新",
@@ -290,8 +290,8 @@
     "_event_type_model": "技术/创新",
     "_event_type_source": "model",
     "board": "行业动态",
-    "title_zh": "工作列表优先级工具使报告和周转时间缩短超70%",
-    "summary_zh": "人工智能驱动的工作列表分诊工具在真实医院环境中应用，可显著缩短报告周转时间。"
+    "title_zh": "工作列表优先级排序工具将报告与周转时间缩短超70%",
+    "summary_zh": "一款人工智能驱动的工作列表分诊工具在真实医院环境中应用，可显著缩短报告周转时间。"
   },
   {
     "title": "Aster DM Quality Care promoter buys Rs 350 crore worth shares from TPG-Backed Centella Mauritius",
@@ -305,25 +305,25 @@
     "_query": "Aster DM Healthcare",
     "url_normalized": "https://moneycontrol.com/news/business/markets/aster-dm-quality-care-promoter-buys-rs-350-crore-worth-shares-from-tpg-backed-centella-mauritius-14021289.html",
     "is_aggregator": false,
-    "published_at": "2026-09-02T20:06:24.405817+00:00",
+    "published_at": "2026-09-03T20:00:36.305401+00:00",
     "matched_entity": "Aster DM Healthcare",
     "matched_alias": "aster dm",
     "_core_keyword": "healthcare",
-    "_model_reason": "报道Aster DM股权收购事件，属资本运作。",
+    "_model_reason": "Aster DM Healthcare股权收购，属资本运作。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "资本运作",
-      "reason": "报道Aster DM股权收购事件，属资本运作。"
+      "reason": "Aster DM Healthcare股权收购，属资本运作。"
     },
     "_model_event_type": "资本运作",
     "event_type": "资本运作",
     "_event_type_rule": "资本运作",
     "_event_type_model": "资本运作",
     "_event_type_source": "model",
-    "title_zh": "Aster DM大股东斥资35亿卢比购Centella Mauritius股份",
-    "summary_zh": "Promoter Union (Mauritius) Holdings收购Aster DM价值超35亿卢比的股份。"
+    "title_zh": "Aster DM Healthcare发起人斥资35亿卢比收购Centella股份",
+    "summary_zh": "Union (Mauritius) Holdings收购Aster DM Healthcare超35亿卢比股权股份，巩固了控股地位。"
   },
   {
     "title": "Corneal Transplants Rise, But Shortage Of Donor Tissue Leaves Thousands Waiting",
@@ -337,31 +337,31 @@
     "_query": "Fortis Healthcare India",
     "url_normalized": "https://outlookindia.com/healthcare-spotlight/corneal-transplants-rise-but-shortage-of-donor-tissue-leaves-thousands-waiting",
     "is_aggregator": false,
-    "published_at": "2026-09-02T14:06:24.405817+00:00",
+    "published_at": "2026-09-03T14:00:36.305401+00:00",
     "matched_entity": null,
     "matched_alias": null,
     "_core_keyword": "transplant",
-    "_model_reason": "报道印度角膜移植供需现状，属医疗行业宏观动态。",
+    "_model_reason": "报道印度角膜移植与捐献短缺现状，属公共卫生动态。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
-      "event_type": "行业新闻",
-      "reason": "报道印度角膜移植供需现状，属医疗行业宏观动态。"
+      "event_type": "公共卫生",
+      "reason": "报道印度角膜移植与捐献短缺现状，属公共卫生动态。"
     },
-    "_model_event_type": "行业新闻",
-    "event_type": "行业新闻",
+    "_model_event_type": "公共卫生",
+    "event_type": "公共卫生",
     "_event_type_rule": "行业新闻",
-    "_event_type_model": "行业新闻",
+    "_event_type_model": "公共卫生",
     "_event_type_source": "model",
     "board": "行业动态",
     "title_zh": "角膜移植数量上升，但供体组织短缺致使数千人等待",
-    "summary_zh": "印度每年进行2.5万至3万例角膜移植手术，远低于超10万例的需求，供体短缺是关键障碍。这导致大量患者等待，亟需提高眼球捐献意识。"
+    "summary_zh": "印度每年完成2.5万至3万例角膜移植，但仍面临超10万例的需求缺口。供体角膜短缺是主要障碍，亟需提高眼球捐献意识。"
   },
   {
     "title": "Aster DM Quality Care Sets Virtual AGM for September 28, 2026",
     "url": "https://www.tipranks.com/news/company-announcements/aster-dm-quality-care-sets-virtual-agm-for-september-28-2026",
-    "snippet": "The latest update is out from Aster DM Healthcare Ltd. ( ($IN:ASTERDM) ). Aster DM Quality Care Limited has announced that its 18th Annual General Meeting...",
+    "snippet": "# Aster DM Quality Care Sets Virtual AGM for September 28, 2026\nThe latest update is out from Aster DM Healthcare Ltd.\n\nAster DM Quality Care Limited, formerly known as Aster DM Healthcare Ltd., operates hospitals and healthcare services in India, with a focus on delivering quality medical care across multiple regions.",
     "date": "22 hours ago",
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_mAaDzFOYZ2KRgxnllfqdlsi3gtltIbmXuoynInU2_xylO1O6WBMMayM&usqp=CAI&s",
     "position": 3,
@@ -370,25 +370,25 @@
     "_query": "Aster DM Healthcare",
     "url_normalized": "https://tipranks.com/news/company-announcements/aster-dm-quality-care-sets-virtual-agm-for-september-28-2026",
     "is_aggregator": false,
-    "published_at": "2026-09-02T10:06:24.405817+00:00",
+    "published_at": "2026-09-03T10:00:36.305401+00:00",
     "matched_entity": "Aster DM Healthcare",
     "matched_alias": "aster dm",
-    "_core_keyword": "healthcare",
-    "_model_reason": "Aster DM召开年度股东大会，属经营动态",
+    "_core_keyword": "hospital",
+    "_model_reason": "设定年度股东大会日期，属医疗集团资本运作动态。",
     "_model_verdict": {
       "is_news": true,
       "is_subject": true,
       "is_industry": true,
       "event_type": "资本运作",
-      "reason": "Aster DM召开年度股东大会，属经营动态"
+      "reason": "设定年度股东大会日期，属医疗集团资本运作动态。"
     },
     "_model_event_type": "资本运作",
     "event_type": "资本运作",
     "_event_type_rule": "行业新闻",
     "_event_type_model": "资本运作",
     "_event_type_source": "model",
-    "title_zh": "Aster DM Quality Care将于2026年9月28日召开虚拟年度股东大会",
-    "summary_zh": "Aster DM Healthcare旗下Aster DM Quality Care宣布召开第18届虚拟年度股东大会。此举旨在履行公司常规治理程序。"
+    "title_zh": "Aster DM Quality Care定于2026年9月28日召开虚拟年度股东大会",
+    "summary_zh": "印度医疗机构Aster DM Quality Care发布最新进展，定于2026年9月28日召开虚拟年度股东大会。此举有助于推进公司治理与股东沟通。"
   },
   {
     "title": "IHH positions for India healthcare boom as it consolidates Fortis investment",
@@ -1427,37 +1427,5 @@
     "_event_type_source": "model",
     "title_zh": "丰隆银行、拉昔胡先及大华继显因IHH业绩超预期将其评级上调至“买入”",
     "summary_zh": "丰隆银行、拉昔胡先银行及大华继显的分析师将综合医疗集团IHH此前的中性评级上调。此举反映了对其业绩超预期表现的认可。"
-  },
-  {
-    "title": "McKesson Boosts Oncology Unit With US$2.2bn Precision Deal",
-    "url": "https://www.healthcareglobal.com/news/mckesson-boosts-oncology-division-with-precision-deal",
-    "date": "2 hours ago",
-    "imageUrl": "https://assets.bizclikmedia.net/553/d1c5ac16a28385beb58f5056e42f673d:ac9e98997d851324994ade468932c524/las-colinas-hq.jpg",
-    "position": 1,
-    "_kind": "news_source",
-    "_query_owner": "Healthcare Global",
-    "_query": "site:healthcareglobal.com healthcare",
-    "url_normalized": "https://healthcareglobal.com/news/mckesson-boosts-oncology-division-with-precision-deal",
-    "is_aggregator": false,
-    "published_at": "2026-08-27T12:12:06.957086+00:00",
-    "matched_entity": null,
-    "matched_alias": null,
-    "_core_keyword": "oncology",
-    "_model_reason": "麦克森斥资22亿美元收购肿瘤业务，属资本运作。",
-    "_model_verdict": {
-      "is_news": true,
-      "is_subject": true,
-      "is_industry": true,
-      "event_type": "资本运作",
-      "reason": "麦克森斥资22亿美元收购肿瘤业务，属资本运作。"
-    },
-    "_model_event_type": "资本运作",
-    "event_type": "资本运作",
-    "_event_type_rule": "行业新闻",
-    "_event_type_model": "资本运作",
-    "_event_type_source": "model",
-    "board": "行业动态",
-    "title_zh": "麦克森斥资22亿美元达成精准医疗交易以增强肿瘤业务",
-    "summary_zh": "麦克森达成价值22亿美元的精准医疗交易。此举将有效增强其肿瘤业务部门的实力。"
   }
 ]
