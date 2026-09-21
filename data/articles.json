@@ -553,38 +553,5 @@
     "board": "行业动态",
     "title_zh": "英国护士在印度因捐献者相关工作获25万美元奖项",
     "summary_zh": "国王学院医院移植协调员Agimol Pradeep因寻找捐献者等工作，获2026年阿斯特守护者全球护理奖及25万美元奖金。"
-  },
-  {
-    "title": "Zydus Spine Surgeons Push the Boundaries of Complex Spine Care, Delivering Excellent Outcomes Across All Ages",
-    "url": "https://sg.finance.yahoo.com/news/zydus-spine-surgeons-push-boundaries-043000290.html",
-    "snippet": "Over the past decade, India has witnessed a worrying rise in spine-related problems, not just among the elderly, but increasingly among young adults and...",
-    "date": "4 hours ago",
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCiu2CjgYGXv2S9KhHqwKDE6l4mJF3xNgp6XtzVc6aCi4ZHggUKZh4Mmc&usqp=CAI&s",
-    "position": 3,
-    "_kind": "entity",
-    "_query_owner": "Apollo Hospitals",
-    "_query": "Apollo Hospitals India",
-    "url_normalized": "https://sg.finance.yahoo.com/news/zydus-spine-surgeons-push-boundaries-043000290.html",
-    "is_aggregator": true,
-    "published_at": "2026-09-14T04:55:14.877334+00:00",
-    "matched_entity": null,
-    "matched_alias": null,
-    "_core_keyword": "surgeon",
-    "_model_reason": "Zydus医院展示复杂脊柱护理技术突破与成果",
-    "_model_verdict": {
-      "is_news": true,
-      "is_subject": true,
-      "is_industry": true,
-      "event_type": "技术/创新",
-      "reason": "Zydus医院展示复杂脊柱护理技术突破与成果"
-    },
-    "_model_event_type": "技术/创新",
-    "event_type": "技术/创新",
-    "_event_type_rule": "行业新闻",
-    "_event_type_model": "技术/创新",
-    "_event_type_source": "model",
-    "board": "行业动态",
-    "title_zh": "Zydus脊柱外科医生突破复杂脊柱护理极限，为各年龄段患者提供卓越疗效",
-    "summary_zh": "过去十年印度脊柱相关疾病发病率令人担忧地上升。该问题不仅在老年群体中高发，在年轻成年人中也日益增多。"
   }
 ]
