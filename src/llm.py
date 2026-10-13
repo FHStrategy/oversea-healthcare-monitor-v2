@@ -21,7 +21,10 @@ from typing import Any, Dict, List, Optional
 
 import requests
 
-API_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions"
+API_BASE_URL = os.environ.get(
+    "LLM_BASE_URL",
+    "http://47.117.187.203/v1"
+).rstrip("/")
 
 # 全局 token 计数器。跑完打印出来，第一天就知道每天花多少钱。
 import threading
@@ -39,16 +42,16 @@ class LLMError(Exception):
 
 
 def _key() -> str:
-    k = os.environ.get("DASHSCOPE_API_KEY")
+    k = os.environ.get("LLM_API_KEY") or os.environ.get("DASHSCOPE_API_KEY")
     if not k:
-        raise LLMError("环境变量 DASHSCOPE_API_KEY 缺失")
+        raise LLMError("环境变量 LLM_API_KEY 缺失")
     return k
 
 
 def chat(
     prompt: str,
     system: Optional[str] = None,
-    model: str = "qwen-plus",
+    model: str = "qwen3",
     temperature: float = 0.1,
     max_retries: int = 3,
     timeout: int = 60,
@@ -62,7 +65,7 @@ def chat(
     for i in range(1, max_retries + 1):
         try:
             r = requests.post(
-                API_URL,
+                f"{API_BASE_URL}/chat/completions",
                 headers={"Authorization": f"Bearer {_key()}",
                          "Content-Type": "application/json"},
                 json={"model": model, "messages": msgs, "temperature": temperature},
