@@ -1,0 +1,25 @@
+name: Self-hosted Runner Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify-runner:
+    name: Verify company Mac mini
+    runs-on: [self-hosted, macOS, ARM64, company-intranet]
+    timeout-minutes: 5
+
+    steps:
+      - name: Show runner information
+        run: |
+          echo "Runner test started"
+          echo "Operating system: $(uname -s)"
+          echo "Architecture: $(uname -m)"
+          echo "Computer name: $(hostname)"
+          echo "Current directory: $(pwd)"
+
+      - name: Verify macOS and Apple Silicon
+        run: |
+          test "$(uname -s)" = "Darwin"
+          test "$(uname -m)" = "arm64"
+          echo "PASS: Running on macOS Apple Silicon"
