@@ -1,0 +1,54 @@
+name: LLM API Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-model:
+    runs-on: [self-hosted, macOS, ARM64, company-intranet]
+    timeout-minutes: 3
+
+    env:
+      LLM_BASE_URL: http://47.117.187.203/v1
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+
+    steps:
+      - name: Test company model API
+        run: |
+          set -eu
+
+          if [ -z "$LLM_API_KEY" ]; then
+            echo "ERROR: LLM_API_KEY is missing"
+            exit 1
+          fi
+
+          echo "Calling company model API..."
+
+          curl --silent --show-error \
+            --connect-timeout 5 \
+            --max-time 60 \
+            --output /tmp/llm-test-response.json \
+            --write-out "\nHTTP_STATUS:%{http_code}\n" \
+            -X POST "${LLM_BASE_URL}/chat/completions" \
+            -H "Authorization: Bearer ${LLM_API_KEY}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "model": "qwen3",
+              "messages": [
+                {
+                  "role": "user",
+                  "content": "请只回复：连接成功"
+                }
+              ],
+              "temperature": 0
+            }' > /tmp/llm-test-status.txt
+
+          cat /tmp/llm-test-status.txt
+          cat /tmp/llm-test-response.json
+
+          if grep -q 'HTTP_STATUS:200' /tmp/llm-test-status.txt; then
+            echo "PASS: Model API request succeeded"
+          else
+            echo "FAIL: Model API request failed"
+            exit 1
+          fi
