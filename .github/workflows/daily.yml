@@ -31,6 +31,18 @@ jobs:
           echo "RUNNER_TOOL_CACHE: ${RUNNER_TOOL_CACHE:-未设置}"
           ls -ld "$HOME/actions-runner/_work/_tool" || true
           ls -ld "$RUNNER_TEMP" || true
+      
+      - name: 检查 Runner 目录权限
+        run: |
+          echo "当前用户：$(whoami)"
+          echo "HOME=$HOME"
+          echo "RUNNER_TEMP=${RUNNER_TEMP:-未设置}"
+          echo "RUNNER_TOOL_CACHE=${RUNNER_TOOL_CACHE:-未设置}"
+          echo "工作目录：$PWD"
+          ls -ld /Users/fosunhealth
+          ls -ld /Users/fosunhealth/actions-runner/_work
+          ls -ld /Users/fosunhealth/actions-runner/_work/_tool
+          ls -ld /Users/fosunhealth/actions-runner/_work/_temp
 
       - uses: actions/setup-python@v5
         with:
