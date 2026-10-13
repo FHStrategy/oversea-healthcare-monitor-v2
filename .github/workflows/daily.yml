@@ -23,10 +23,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: 检查 Runner 缓存目录
+        run: |
+          echo "User: $(whoami)"
+          echo "HOME: $HOME"
+          echo "RUNNER_TEMP: ${RUNNER_TEMP:-未设置}"
+          echo "RUNNER_TOOL_CACHE: ${RUNNER_TOOL_CACHE:-未设置}"
+          ls -ld "$HOME/actions-runner/_work/_tool" || true
+          ls -ld "$RUNNER_TEMP" || true
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
+          
       - run: pip install requests pyyaml
 
       - name: 运行流水线
