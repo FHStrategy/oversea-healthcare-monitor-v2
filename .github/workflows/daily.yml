@@ -83,6 +83,8 @@ jobs:
       - name: 配置 Pages
         if: success()
         uses: actions/configure-pages@v5
+      - name: 添加 gtar 到 PATH
+        run: echo "/opt/homebrew/opt/gnu-tar/libexec/gnubin" >> "$GITHUB_PATH"
       - name: 上传网页
         if: success()
         uses: actions/upload-pages-artifact@v3
