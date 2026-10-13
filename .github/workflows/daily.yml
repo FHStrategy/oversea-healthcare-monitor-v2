@@ -44,11 +44,11 @@ jobs:
           ls -ld /Users/fosunhealth/actions-runner/_work/_tool
           ls -ld /Users/fosunhealth/actions-runner/_work/_temp
 
-      - uses: actions/setup-python@v5
-        env:
-          RUNNER_TOOL_CACHE: /Users/fosunhealth/actions-runner/_work/_tool
+      - name: 设置 Python 3.11
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: ''    
           
       - run: pip install requests pyyaml
 
