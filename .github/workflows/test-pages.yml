@@ -1,46 +1,51 @@
 name: 测试网页部署
-on:
-workflow_dispatch:
+
+"on":
+  workflow_dispatch:
+
 permissions:
-contents: read
-pages: write
-id-token: write
+  contents: read
+  pages: write
+  id-token: write
+
 concurrency:
-group: pages
-cancel-in-progress: false
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-deploy:
-runs-on: [self-hosted, macOS, ARM64, company-intranet]
+  deploy:
+    runs-on:
+      - self-hosted
+      - macOS
+      - ARM64
+      - company-intranet
 
-  steps:
-    - name: 检出仓库
-      uses: actions/checkout@v4
+    steps:
+      - name: 检查已生成的网页
+        shell: bash
+        run: |
+          SITE="/Users/fosunhealth/actions-runner/_work/oversea-healthcare-monitor-v2/oversea-healthcare-monitor-v2/site"
 
-    - name: 查找最近生成的网页
-      id: find-site
-      shell: bash
-      run: |
-        SITE="/Users/fosunhealth/actions-runner/_work/oversea-healthcare-monitor-v2/oversea-healthcare-monitor-v2/site"
+          echo "当前工作目录：$(pwd)"
+          echo "检查网页目录：$SITE"
 
-        if [ ! -f "$SITE/index.html" ]; then
-          echo "找不到网页文件：$SITE/index.html"
-          exit 1
-        fi
+          if [ ! -f "$SITE/index.html" ]; then
+            echo "错误：找不到 site/index.html"
+            exit 1
+          fi
 
-        echo "网页文件存在："
-        ls -lh "$SITE/index.html"
-        echo "site_path=$SITE" >> "$GITHUB_OUTPUT"
+          ls -lh "$SITE/index.html"
 
-    - name: 配置 Pages
-      uses: actions/configure-pages@v5
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
 
-    - name: 添加 gtar 到 PATH
-      run: echo "/opt/homebrew/opt/gnu-tar/libexec/gnubin" >> "$GITHUB_PATH"
+      - name: 添加 gtar 到 PATH
+        run: echo "/opt/homebrew/opt/gnu-tar/libexec/gnubin" >> "$GITHUB_PATH"
 
-    - name: 上传网页
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: /Users/fosunhealth/actions-runner/_work/oversea-healthcare-monitor-v2/oversea-healthcare-monitor-v2/site
+      - name: 上传网页
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: /Users/fosunhealth/actions-runner/_work/oversea-healthcare-monitor-v2/oversea-healthcare-monitor-v2/site
 
-    - name: 部署 Pages
-      uses: actions/deploy-pages@
+      - name: 部署 Pages
+        uses: actions/deploy-pages@v4
