@@ -1,0 +1,48 @@
+name: Config Scan
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scan:
+    name: Scan repository configuration
+    runs-on: [self-hosted, macOS, ARM64, company-intranet]
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Scan old model and runner settings
+        shell: bash
+        run: |
+          set +e
+
+          echo "======================================"
+          echo "1. Search for qwen-plus"
+          echo "======================================"
+          git grep -n -I -i -e 'qwen-plus' -- . ':!*.lock'
+          if [ $? -ne 0 ]; then
+            echo "No matches found."
+          fi
+
+          echo ""
+          echo "======================================"
+          echo "2. Search for DASHSCOPE_API_KEY"
+          echo "======================================"
+          git grep -n -I -e 'DASHSCOPE_API_KEY' -- . ':!*.lock'
+          if [ $? -ne 0 ]; then
+            echo "No matches found."
+          fi
+
+          echo ""
+          echo "======================================"
+          echo "3. Search for ubuntu-latest"
+          echo "======================================"
+          git grep -n -I -e 'ubuntu-latest' -- . ':!*.lock'
+          if [ $? -ne 0 ]; then
+            echo "No matches found."
+          fi
+
+          echo ""
+          echo "Scan complete."
