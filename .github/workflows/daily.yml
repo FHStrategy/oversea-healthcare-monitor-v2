@@ -45,6 +45,8 @@ jobs:
           ls -ld /Users/fosunhealth/actions-runner/_work/_temp
 
       - uses: actions/setup-python@v5
+        env:
+          RUNNER_TOOL_CACHE: /Users/fosunhealth/actions-runner/_work/_tool
         with:
           python-version: '3.11'
           
