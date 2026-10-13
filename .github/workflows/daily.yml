@@ -44,13 +44,14 @@ jobs:
           ls -ld /Users/fosunhealth/actions-runner/_work/_tool
           ls -ld /Users/fosunhealth/actions-runner/_work/_temp
 
-      - name: 设置 Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: ''    
+      - name: 检查 Python 环境
+        run: |
+          /Library/Frameworks/Python.framework/Versions/3.14/bin/python3 --version
+          /Library/Frameworks/Python.framework/Versions/3.14/bin/python3 -m pip --version
           
-      - run: pip install requests pyyaml
+      - name: 安装依赖
+        run: |
+          /Library/Frameworks/Python.framework/Versions/3.14/bin/python3 -m pip install requests pyyaml
 
       - name: 运行流水线
         env:
@@ -62,7 +63,7 @@ jobs:
           FEISHU_BASE_TOKEN: ${{ secrets.FEISHU_BASE_TOKEN }}
           FEISHU_TABLE_ID:   ${{ secrets.FEISHU_TABLE_ID }}
           ALERT_OPEN_ID:     ${{ secrets.ALERT_OPEN_ID }}
-        run: python src/run.py
+        run: /Library/Frameworks/Python.framework/Versions/3.14/bin/python3 src/run.py
 
       # 把 7 天窗口数据 + 审计日志 commit 回仓（runner 无状态，不 commit 就丢）
       - name: 提交数据
