@@ -131,7 +131,7 @@ def main():
         "unique_candidates": len(candidates),
         "screened_passed": len(screened),
         "screened_dropped": len(dropped),
-        "screen_errors": len(errors),
+        "screen_errors": errors if isinstance(errors, int) else len(errors),
         "needs_review_skipped": review_count,
         "enrichment_success": len(enriched),
         "enrichment_failed": len(enrich_failed),
