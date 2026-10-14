@@ -1,0 +1,49 @@
+name: 历史新闻恢复（手动）
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: preview 只预览；write 正式写入飞书
+        required: true
+        type: choice
+        options:
+          - preview
+          - write
+        default: preview
+permissions:
+  contents: read
+concurrency:
+  group: recover-history
+  cancel-in-progress: false
+jobs:
+  recover:
+    name: 恢复历史新闻
+    runs-on: [self-hosted, macOS, ARM64]
+    timeout-minutes: 60
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      - name: 配置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 安装依赖
+        run: python -m pip install requests pyyaml
+      - name: 运行历史恢复
+        env:
+          RECOVERY_MODE: ${{ inputs.mode }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_BASE_TOKEN: ${{ secrets.FEISHU_BASE_TOKEN }}
+          FEISHU_TABLE_ID: ${{ secrets.FEISHU_TABLE_ID }}
+        run: python src/recover_history.py
+      - name: 保存恢复报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: history-recovery-report
+          path: data/recovery-history-report.json
+          if-no-files-found: ignore
+          retention-days: 30
