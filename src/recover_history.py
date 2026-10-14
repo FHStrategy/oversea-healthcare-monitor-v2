@@ -94,7 +94,7 @@ def main():
     screened, dropped, errors = model_filter(candidates, filters)
     log(
         f"模型筛选：通过 {len(screened)} 条；"
-        f"剔除 {len(dropped)} 条；筛选错误 {len(errors)} 条"
+        f"剔除 {len(dropped)} 条；筛选错误 {errors} 条"
     )
     # 筛选失败或被标记为待人工复核的记录不自动入库。
     ready = []
