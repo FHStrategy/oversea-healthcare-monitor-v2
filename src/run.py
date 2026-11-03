@@ -117,7 +117,13 @@ def main():
     log(f"成本: {usage['calls']} 次调用, "
         f"{usage['prompt_tokens'] + usage['completion_tokens']} tokens, "
         f"耗时 {(datetime.now(UTC) - t0).seconds}s")
-
+    #富化有失败且最终0条入库——模型挂了，拒绝绿灯空转
+    if stats.get("enrich_failed") and not today_items:
+        raise RuntimeError(
+            f"富化失败{stats['enrich_failed']}条且0条入库——模型疑似失效，"
+            f"拒绝绿灯空转，请检查LLM服务"
+        ) 
+                   
     # ---- 2. 7 天窗口合并 ----
     store_path = ROOT / "data" / "articles.json"
     old = load_store(store_path)
