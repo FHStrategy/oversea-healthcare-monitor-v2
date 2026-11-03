@@ -150,6 +150,7 @@ def search_news(
 
     last_err = None
     for attempt in range(1, max_retries + 1):
+        _throttle()   # 每个请求前先过限速器,避免打爆免费额度5次/分钟       
         try:
             r = requests.post(API_URL, headers=headers, json=payload, timeout=timeout)
         except Exception as e:
